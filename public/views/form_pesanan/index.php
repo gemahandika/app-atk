@@ -140,7 +140,7 @@ $time = date("H:i");
                                 <input type="hidden" class="form-control" name="status" value="KERANJANG" readonly>
                                 <input type="hidden" class="form-control" name="status1" value="DIKIRIM" readonly>
                                 <input type="hidden" class="form-control" name="date" value="<?= $date ?>" readonly>
-                                <input type="text" class="form-control" name="invoice" value="<?php echo $noInvoice; ?>" readonly>
+                                <input type="hidden" class="form-control" name="invoice" value="<?php echo $noInvoice; ?>" readonly>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-3 col-form-label">Total Items :</label>
