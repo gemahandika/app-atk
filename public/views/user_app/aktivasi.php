@@ -51,6 +51,7 @@ if (!isset($_SESSION['admin_akses'])) {
                                             <td class="th-small text-center"><?= $data['status'] ?></td>
                                             <td class="th-small text-center">
                                                 <a href="#" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['login_id'] ?>">AKTIFKAN USER</a>
+                                                <a href="delete.php?id=<?= $data['login_id'] ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
                                             </td>
                                         </tr>
                                         <!-- Modal Aktivasi User -->

@@ -52,7 +52,7 @@
     }
 </script>
 <!-- ------------------------------- -->
-
+<!-- Edit Data Barang -->
 <script>
     $(document).ready(function() {
         $('#formEditBarang').on('submit', function(event) {

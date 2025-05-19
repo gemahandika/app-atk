@@ -40,8 +40,26 @@ $time = date("H:i");
                         <form action="../../../app/controller/Request.php" method="post">
 
                             <input type="hidden" class="form-control" name="nama_user" value="<?= $data2 ?>" readonly>
-                            <input type="hidden" class="form-control" name="user_id" value="<?= $user1 ?>" readonly>
+                            <?php if (has_access($allowed_agen)) { ?>
+                                <input type="hidden" class="form-control" name="user_id" value="<?= $user1 ?>" readonly>
+                            <?php } ?>
                             <input type="hidden" class="form-control" name="status" value="KERANJANG" readonly>
+                            <?php if (has_access($allowed_admin)) { ?>
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label">Unit <strong class="text-danger">*</strong></label>
+                                    <div class="col-sm-8">
+                                        <select class="form-select select2" name="user_id" aria-label="Default select example" required>
+                                            <option value="">- Pilih Data -</option>
+                                            <?php
+                                            $sqluser = mysqli_query($koneksi, "SELECT * FROM user WHERE status = 'user' ORDER BY login_id ASC") or die(mysqli_error($koneksi));
+                                            while ($data_user = mysqli_fetch_array($sqluser)) {
+                                                echo '<option value="' . $data_user['username'] . '">' . $data_user['username'] . '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            <?php } ?>
 
                             <div class="row mb-3">
                                 <label class="col-sm-3 col-form-label">Katagori <strong class="text-danger">*</strong></label>
@@ -211,13 +229,12 @@ $time = date("H:i");
 
                             <?php } ?>
                         </table>
-                        <!-- End Primary Color Bordered Table -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
-</main><!-- End #main -->
+</main>
 
 
 
