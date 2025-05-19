@@ -30,9 +30,9 @@ if (!isset($_SESSION['admin_akses'])) {
                                     <a href="bulk_insert_barang.php" type="button" class="btn btn-primary">Upload Data</a>
                                 </div>
 
-                                <table id="example" class="table datatable" style="width:100%">
+                                <table id="example1" class="display nowrap" style="width:100%">
                                     <thead>
-                                        <tr class="btn-primary">
+                                        <tr class="bg-primary text-white">
                                             <th class="th-small text-center">NO</th>
                                             <th class="th-small text-center">KODE_BARANG</th>
                                             <th class="th-small text-center">NAMA BARANG</th>

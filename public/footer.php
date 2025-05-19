@@ -154,7 +154,7 @@
         if (document.querySelector('#example1')) {
             new DataTable('#example1', {
                 paging: true,
-                scrollCollapse: false,
+                scrollCollapse: true,
                 scrollY: '335px'
             });
         }
@@ -162,8 +162,8 @@
         if (document.querySelector('#example')) {
             new DataTable('#example', {
                 paging: true,
-                scrollCollapse: false,
-                scrollY: '350px'
+                scrollCollapse: false
+                // scrollY: '350px'
             });
         }
     });

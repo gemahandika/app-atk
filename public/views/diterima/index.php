@@ -14,9 +14,9 @@ $time = date("H:i");
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title" style="border-bottom: 1px solid black;">Terima Pesanan</h5>
-                        <table id="example" class="table" style="width:100%">
+                        <table id="example1" class="display nowrap" style="width:100%">
                             <thead>
-                                <tr class="table-info">
+                                <tr class="bg-primary text-white">
                                     <th class="th-small text-center">No</th>
                                     <th class="th-small text-center">NAMA</th>
                                     <th class="th-small text-center">INVOICE</th>

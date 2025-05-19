@@ -20,9 +20,9 @@ if (!isset($_SESSION['admin_akses'])) {
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title" style="border-bottom: 1px solid black;">Data ATK Masuk</h5>
-                            <table id="example1" class="table datatable" style="width:100%">
+                            <table id="example1" class="display nowrap" style="width:100%">
                                 <thead>
-                                    <tr>
+                                    <tr class="bg-primary text-white">
                                         <th class="text-center" style="font-size: 12px;">No</th>
                                         <th class="text-center" style="font-size: 12px;">TGL REQUEST</th>
                                         <th class="text-center" style="font-size: 12px;">KODE BARANG</th>
