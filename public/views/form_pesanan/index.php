@@ -51,7 +51,7 @@ $time = date("H:i");
                                         <select class="form-select select2" name="user_id" aria-label="Default select example" required>
                                             <option value="">- Pilih Data -</option>
                                             <?php
-                                            $sqluser = mysqli_query($koneksi, "SELECT * FROM user WHERE status = 'user' ORDER BY login_id ASC") or die(mysqli_error($koneksi));
+                                            $sqluser = mysqli_query($koneksi, "SELECT * FROM user WHERE status IN ('user', 'admin') ORDER BY login_id ASC") or die(mysqli_error($koneksi));
                                             while ($data_user = mysqli_fetch_array($sqluser)) {
                                                 echo '<option value="' . $data_user['username'] . '">' . $data_user['username'] . '</option>';
                                             }

@@ -162,10 +162,7 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
                                             <td class="th-small text-center"><?= $data['invoice']; ?></td>
                                         </tr>
                                 <?php  }
-                                } else {
-                                    // Jika tidak ada data
-                                    echo "<tr><td colspan='6'>Tidak ada data ditemukan.</td></tr>";
-                                } ?>
+                                }  ?>
                             </tbody>
                         </table>
                         <!-- End Primary Color Bordered Table -->

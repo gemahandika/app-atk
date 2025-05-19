@@ -20,13 +20,6 @@ if (!isset($_SESSION['admin_akses'])) {
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title" style="border-bottom: 1px solid black;">Data ATK Masuk</h5>
-                            <!-- Primary Color Bordered Table -->
-                            <!-- <div class="row mb-3 d-flex align-items-center">
-                            <div class="col-sm-4 mt-2">
-                                <button type="submit" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#basicModal">Tambah Data</button>
-                                <a href="index.php" type="button" class="btn btn-primary">Download</a>
-                            </div>
-                        </div> -->
                             <table id="example1" class="table datatable" style="width:100%">
                                 <thead>
                                     <tr>

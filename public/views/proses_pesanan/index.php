@@ -24,7 +24,7 @@ if (!isset($_SESSION['admin_akses'])) {
                                     <a href="list_data.php" type="submit" class="btn btn-primary">List Data</a>
                                 </div>
                             </div>
-                            <table class="table" style="width:100%">
+                            <table id="example" class="table" style="width:100%">
                                 <thead>
                                     <tr class="table-warning">
                                         <th class="th-small text-center">No</th>

@@ -152,14 +152,18 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         if (document.querySelector('#example1')) {
-            new DataTable('#example1');
+            new DataTable('#example1', {
+                paging: true,
+                scrollCollapse: false,
+                scrollY: '335px'
+            });
         }
 
         if (document.querySelector('#example')) {
             new DataTable('#example', {
-                paging: false,
-                scrollCollapse: true,
-                scrollY: '335px'
+                paging: true,
+                scrollCollapse: false,
+                scrollY: '350px'
             });
         }
     });

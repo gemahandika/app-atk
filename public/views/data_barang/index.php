@@ -30,16 +30,17 @@ if (!isset($_SESSION['admin_akses'])) {
                                     <a href="bulk_insert_barang.php" type="button" class="btn btn-primary">Upload Data</a>
                                 </div>
 
-                                <table id="example1" class="table datatable" style="width:100%">
+                                <table id="example" class="table datatable" style="width:100%">
                                     <thead>
-                                        <tr>
+                                        <tr class="btn-primary">
                                             <th class="th-small text-center">NO</th>
                                             <th class="th-small text-center">KODE_BARANG</th>
                                             <th class="th-small text-center">NAMA BARANG</th>
                                             <th class="th-small text-center">SATUAN</th>
                                             <th class="th-small text-center">HARGA</th>
-                                            <th class="th-small text-center">STATUS</th>
+                                            <!-- <th class="th-small text-center">STATUS</th> -->
                                             <th class="th-small text-center">STOK</th>
+                                            <th class="th-small text-center">MIN. ORDER</th>
                                             <th class="th-small text-center">BUFFER</th>
                                             <th class="th-small text-center">KETERANGAN</th>
                                             <th class="th-small text-center">ACTION</th>
@@ -71,8 +72,9 @@ if (!isset($_SESSION['admin_akses'])) {
                                                 <td class="th-small text-center"><?= $data['nama_barang'] ?></td>
                                                 <td class="th-small text-center"><?= $data['satuan'] ?></td>
                                                 <td class="th-small text-center"><?= number_format($data['harga'], 0, ',', '.') ?></td>
-                                                <td class="th-small text-center"><?= $data['status_barang'] ?></td>
+                                                <!-- <td class="th-small text-center"><?= $data['status_barang'] ?></td> -->
                                                 <td class="th-small text-center"><?= $stok_barang ?></td>
+                                                <td class="th-small text-center"><?= $data['min_order'] ?></td>
                                                 <td class="th-small text-center"><?= $buffer ?></td>
                                                 <td class="th-small text-center"><?= $keterangan ?></td>
                                                 <td class="th-small text-center">
