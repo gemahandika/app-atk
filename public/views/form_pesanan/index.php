@@ -38,24 +38,26 @@ $time = date("H:i");
                         <h5 class="card-title" style="border-bottom: 1px solid black;">Form Pesanan</h5>
                         <!-- General Form Elements -->
                         <form action="../../../app/controller/Request.php" method="post">
-
-                            <input type="hidden" class="form-control" name="nama_user" value="<?= $data2 ?>" readonly>
                             <?php if (has_access($allowed_agen)) { ?>
-                                <input type="hidden" class="form-control" name="user_id" value="<?= $user1 ?>" readonly>
+                                <input type="hidden" class="form-control" name="nama_user" value="<?= $data2 ?>" readonly>
                             <?php } ?>
+                            <input type="hidden" class="form-control" name="user_id" value="<?= $user1 ?>" readonly>
+
                             <input type="hidden" class="form-control" name="status" value="KERANJANG" readonly>
                             <?php if (has_access($allowed_admin)) { ?>
                                 <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label">Unit <strong class="text-danger">*</strong></label>
+                                    <label class="col-sm-3 col-form-label">Pemesan <strong class="text-danger">*</strong></label>
                                     <div class="col-sm-8">
-                                        <select class="form-select select2" name="user_id" aria-label="Default select example" required>
+                                        <select class="form-select select2" name="nama_user" aria-label="Default select example" required>
                                             <option value="">- Pilih Data -</option>
                                             <?php
                                             $sqluser = mysqli_query($koneksi, "SELECT * FROM user WHERE status IN ('user', 'admin') ORDER BY login_id ASC") or die(mysqli_error($koneksi));
+                                            $result_user = array();
                                             while ($data_user = mysqli_fetch_array($sqluser)) {
-                                                echo '<option value="' . $data_user['username'] . '">' . $data_user['username'] . '</option>';
-                                            }
-                                            ?>
+                                                $result_user[] = $data_user; ?>
+                                                <option value="<?= $data_user['nama_user'] ?>"><?= $data_user['nama_user'] ?></option>
+                                            <?php } ?>
+
                                         </select>
                                     </div>
                                 </div>
@@ -190,10 +192,11 @@ $time = date("H:i");
                     <div class="card-body">
                         <h5 class="card-title" style="border-bottom: 1px solid black;">List Pesanan</h5>
                         <!-- Primary Color Bordered Table -->
-                        <table id="example" class="display nowrap" style="width:100%">
+                        <table id="example1" class="display nowrap" style="width:100%">
                             <thead>
                                 <tr class="bg-secondary text-white">
                                     <th class="th-small text-center">NO</th>
+                                    <th class="th-small text-center">NAMA PEMESAN</th>
                                     <th class="th-small text-center">KATAGORI</th>
                                     <th class="th-small text-center">NAMA</th>
                                     <th class="th-small text-center">SATUAN</th>
@@ -216,6 +219,7 @@ $time = date("H:i");
 
                                 <tr>
                                     <td><?= $no; ?></td>
+                                    <td class="th-small text-center"><?= $data1['nama_user'] ?></td>
                                     <td class="th-small text-center"><?= $data1['katagori'] ?></td>
                                     <td class="th-small text-center"><?= $data1['nama_barang'] ?></td>
                                     <td class="th-small text-center"><?= $data1['satuan'] ?></td>
