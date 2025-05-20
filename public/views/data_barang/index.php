@@ -27,7 +27,9 @@ if (!isset($_SESSION['admin_akses'])) {
                                 <div class="col-sm-4 mt-2">
                                     <button type="submit" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#basicModal">Tambah Data</button>
                                     <a href="export.php" type="button" class="btn btn-primary">Download</a>
-                                    <a href="bulk_insert_barang.php" type="button" class="btn btn-primary">Upload Data</a>
+                                    <?php if (has_access($allowed_super_admin)) { ?>
+                                        <a href="bulk_insert_barang.php" type="button" class="btn btn-primary">Upload Data</a>
+                                    <?php } ?>
                                 </div>
 
                                 <table id="example1" class="display nowrap" style="width:100%">
