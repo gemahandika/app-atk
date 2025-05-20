@@ -89,16 +89,6 @@
     $(document).ready(function() {
         var allItems = <?php echo json_encode($result); ?>;
 
-        $('#katagori').change(function() {
-            var selectedCategory = $(this).val().toLowerCase();
-            var filteredItems = allItems.filter(item => item.katagori.toLowerCase() === selectedCategory);
-
-            $('#namaBarang').empty().append('<option value="">- Pilih Barang -</option>');
-            filteredItems.forEach(item => {
-                $('#namaBarang').append(`<option value="${item.nama_barang}">${item.nama_barang} - Rp. ${parseInt(item.harga).toLocaleString('id-ID')}</option>`);
-            });
-        });
-
         $('#namaBarang').change(function() {
             var selectedItemName = $(this).val().split(' - ')[0];
             var selectedItem = allItems.find(item => item.nama_barang === selectedItemName);
@@ -123,6 +113,7 @@
         }
     });
 </script>
+
 
 <!-- Kirim Pesanan Toggle Button -->
 <script>

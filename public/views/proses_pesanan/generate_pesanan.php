@@ -98,8 +98,8 @@ while ($data1 = mysqli_fetch_array($sql)) {
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <input type="text" class="form-control" name="id" value="<?= $data1['id_keranjang'] ?>" readonly required>
-                                                        <input type="text" class="form-control" name="invoice" value="<?= $data1['invoice'] ?>" readonly required>
+                                                        <input type="hidden" class="form-control" name="id" value="<?= $data1['id_keranjang'] ?>" readonly required>
+                                                        <input type="hidden" class="form-control" name="invoice" value="<?= $data1['invoice'] ?>" readonly required>
 
                                                         <div class="row mb-3">
                                                             <label class="col-sm-3 col-form-label">Barang :</label>

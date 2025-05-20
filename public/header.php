@@ -119,14 +119,20 @@ include '../../../app/models/header_models.php';
                     <a class="nav-link collapsed" href="../pickup/index.php">
                         <i class="bx bxs-truck"></i>
                         <span>Pickup</span>
+                        <?php if ($diproses > 0): ?>
+                            <span class="badge bg-danger position-absolute translate-middle-y end-0" style="top: 20px; "><?php echo $diproses; ?></span>
+                        <?php endif; ?>
                     </a>
                 </li><!-- EndPickup Nav -->
             <?php } ?>
             <?php if (has_access($allowed_user)) { ?>
-                <li class="nav-item" style="border-bottom: 1px solid rgba(0, 0, 0, 0.3);">
+                <li class="nav-item" style="border-bottom: 1px solid rgba(0, 0, 0, 0.3);  position: relative;">
                     <a class="nav-link collapsed" href="../diterima/index.php">
                         <i class="ri-hand-coin-line"></i>
                         <span>Terima Pesanan</span>
+                        <?php if ($dipickup > 0): ?>
+                            <span class="badge bg-danger position-absolute translate-middle-y end-0" style="top: 20px; "><?php echo $dipickup; ?></span>
+                        <?php endif; ?>
                     </a>
                 </li><!-- EndPickup Nav -->
             <?php } ?>
