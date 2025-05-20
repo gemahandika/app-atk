@@ -92,6 +92,7 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
                                     <th class="small text-center" style="font-size: 12px;">USER ID</th>
                                     <th class="small text-center" style="font-size: 12px;">NAMA USER</th>
                                     <th class="small text-center" style="font-size: 12px;">INVOICE</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -160,6 +161,7 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
                                             <td class="th-small text-center"><?= $data['user_id']; ?></td>
                                             <td class="th-small text-center"><?= $data['nama_user']; ?></td>
                                             <td class="th-small text-center"><?= $data['invoice']; ?></td>
+
                                         </tr>
                                 <?php  }
                                 }  ?>

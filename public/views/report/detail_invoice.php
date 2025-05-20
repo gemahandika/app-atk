@@ -89,6 +89,9 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
                                     <th class="th-small text-center">TOTAL TAGIHAN</th>
                                     <th class="th-small text-center">STATUS</th>
                                     <th class="th-small text-center">PEMBAYARAN</th>
+                                    <?php if (has_access($allowed_super_admin)) { ?>
+                                        <th class="small text-center" style="font-size: 12px;">ACTION</th>
+                                    <?php } ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -172,6 +175,11 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
                                                 <?php } ?>
 
                                             </td>
+                                            <?php if (has_access($allowed_super_admin)) { ?>
+                                                <td class="th-small text-left">
+                                                    <a href="delete.php?invoice=<?= $data['invoice'] ?>" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                                                </td>
+                                            <?php } ?>
                                         </tr>
                                 <?php
                                     }
