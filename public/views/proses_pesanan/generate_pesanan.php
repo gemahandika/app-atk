@@ -47,9 +47,9 @@ while ($data1 = mysqli_fetch_array($sql)) {
                         // Cek apakah statusnya GENERATE
                         $disabled_generate = ($status_pesanan === 'GENERATE') ? 'disabled' : '';
                         ?>
-                        <table class="table datatable" style="width:100%">
+                        <table id="example1" class="display nowrap" style="width:100%">
                             <thead>
-                                <tr>
+                                <tr class="bg-primary text-white">
                                     <th class="small text-center">No</th>
                                     <th class="small text-center">Kode Barang</th>
                                     <th class="small text-center">Katagori</th>

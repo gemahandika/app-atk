@@ -21,12 +21,12 @@ if (!isset($_SESSION['admin_akses'])) {
                             <h5 class="card-title" style="border-bottom: 1px solid black;">Proses ATK Masuk</h5>
                             <div class="row mb-3 d-flex align-items-center">
                                 <div class="col-sm-4 mt-2">
-                                    <a href="list_data.php" type="submit" class="btn btn-primary">List Data</a>
+                                    <a href="list_data.php" type="submit" class="btn btn-success">List Data</a>
                                 </div>
                             </div>
-                            <table id="example" class="table" style="width:100%">
+                            <table id="example1" class="display nowrap" style="width:100%">
                                 <thead>
-                                    <tr class="table-warning">
+                                    <tr class="bg-success text-white">
                                         <th class="th-small text-center">No</th>
                                         <th class="th-small text-center">NAMA</th>
                                         <th class="th-small text-center">INVOICE</th>
