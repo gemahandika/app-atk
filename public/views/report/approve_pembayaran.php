@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION['admin_akses'])) {
     header("location:../page_error/error.php");
     exit();
-} else if (!in_array("super_admin", $_SESSION['admin_akses'])) {
+} else if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_SESSION['admin_akses'])) {
     header("location:../page_error/error.php");
     exit();
 } else {

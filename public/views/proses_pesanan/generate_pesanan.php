@@ -104,7 +104,7 @@ while ($data1 = mysqli_fetch_array($sql)) {
                                                         <div class="row mb-3">
                                                             <label class="col-sm-3 col-form-label">Barang :</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" id="nama_barang_<?= $data1['id_keranjang'] ?>" name="nama_barang" value="<?= $data1['nama_barang'] ?>" readonly required>
+                                                                <input type="text" class="form-control" id="nama_barang_<?= $data1['id_keranjang'] ?>" name="nama_barang" value="<?= $data1['nama_barang'] ?>" style="background-color: #fffde7;" readonly required>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
@@ -116,13 +116,13 @@ while ($data1 = mysqli_fetch_array($sql)) {
                                                         <div class="row mb-3">
                                                             <label for="inputText" class="col-sm-3 col-form-label">Harga :</label>
                                                             <div class="col-sm-8">
-                                                                <input type="number" class="form-control" id="harga_<?= $data1['id_keranjang'] ?>" name="harga" value="<?= $data1['harga'] ?>" readonly>
+                                                                <input type="number" class="form-control" id="harga_<?= $data1['id_keranjang'] ?>" name="harga" value="<?= $data1['harga'] ?>" style="background-color: #fffde7;" style="background-color: #fffde7;" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
                                                             <label for="inputText" class="col-sm-3 col-form-label">Total Harga :</label>
                                                             <div class="col-sm-8">
-                                                                <input type="number" class="form-control" name="total_harga" id="total_harga_<?= $data1['id_keranjang'] ?>" value="<?= $data1['total_harga'] ?>" readonly>
+                                                                <input type="number" class="form-control" name="total_harga" id="total_harga_<?= $data1['id_keranjang'] ?>" value="<?= $data1['total_harga'] ?>" style="background-color:rgb(255, 239, 231);" readonly>
                                                             </div>
                                                         </div>
 

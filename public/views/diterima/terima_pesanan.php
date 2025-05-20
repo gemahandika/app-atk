@@ -29,9 +29,9 @@ $data2 = $data["invoice"];
                         <h5 class="card-title" style="border-bottom: 1px solid black;">Detail Pesanan <?= $data['nama_user'] ?> - Invoice : <?= $invoice ?> </h5>
                         <div class="row mb-3 d-flex align-items-center">
                         </div>
-                        <table id="example" class="display nowrap" style="width:100%">
+                        <table id="example1" class="display nowrap" style="width:100%">
                             <thead>
-                                <tr>
+                                <tr class="bg-success text-white">
                                     <th class="th-small text-center">NO</th>
                                     <th class="th-small text-center">KATAGORI</th>
                                     <th class="th-small text-center">NAMA BARANG</th>

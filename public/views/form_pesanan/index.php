@@ -38,40 +38,13 @@ $time = date("H:i");
                         <h5 class="card-title" style="border-bottom: 1px solid black;">Form Pesanan</h5>
                         <!-- General Form Elements -->
                         <form action="../../../app/controller/Request.php" method="post">
-                            <?php if (has_access($allowed_admin)) { ?>
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-3 col-form-label">Pemesan <strong class="text-danger">*</strong></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="nama_user" required>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                            <?php if (has_access($allowed_agen)) { ?>
-                                <input type="hidden" class="form-control" name="nama_user" value="<?= $data2 ?>" readonly>
-                            <?php } ?>
+                            <input type="hidden" class="form-control" name="nama_user" value="<?= $data2 ?>" readonly>
                             <input type="hidden" class="form-control" name="user_id" value="<?= $user1 ?>" readonly>
 
                             <input type="hidden" class="form-control" name="status" value="KERANJANG" readonly>
-                            <!-- <?php if (has_access($allowed_admin)) { ?>
-                                <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label">Pemesan <strong class="text-danger">*</strong></label>
-                                    <div class="col-sm-8">
-                                        <select class="form-select select2" name="nama_user" aria-label="Default select example" required>
-                                            <option value="">- Pilih Data -</option>
-                                            <?php
-                                            $sqluser = mysqli_query($koneksi, "SELECT * FROM user WHERE status IN ('user', 'admin') ORDER BY login_id ASC") or die(mysqli_error($koneksi));
-                                            $result_user = array();
-                                            while ($data_user = mysqli_fetch_array($sqluser)) {
-                                                $result_user[] = $data_user; ?>
-                                                <option value="<?= $data_user['nama_user'] ?>"><?= $data_user['nama_user'] ?></option>
-                                            <?php } ?>
 
-                                        </select>
-                                    </div>
-                                </div>
-                            <?php } ?> -->
 
-                            <!-- <div class="row mb-3">
+                            <div class="row mb-3">
                                 <label class="col-sm-3 col-form-label">Katagori <strong class="text-danger">*</strong></label>
                                 <div class="col-sm-8">
                                     <select class="form-select" id="katagori" name="katagori" aria-label="Default select example" required>
@@ -80,7 +53,7 @@ $time = date("H:i");
                                         <option value="BERBAYAR">Berbayar</option>
                                     </select>
                                 </div>
-                            </div> -->
+                            </div>
 
                             <div class="row mb-3">
                                 <label class="col-sm-3 col-form-label">Barang <strong class="text-danger">*</strong></label>
@@ -92,14 +65,12 @@ $time = date("H:i");
                                         $result = array();
                                         while ($data = mysqli_fetch_array($sql)) {
                                             $result[] = $data;
-                                            echo '<option value="' . htmlspecialchars($data['nama_barang']) . '">' . htmlspecialchars($data['nama_barang']) . ' - Rp. ' . number_format($data['harga'], 0, ',', '.') . '</option>';
                                         }
                                         ?>
                                     </select>
                                 </div>
                             </div>
 
-                            <input type="hidden" class="form-control" name="katagori" value="NULL" readonly>
                             <input type="hidden" class="form-control" name="kode_barang" id="kode_barang" readonly>
 
                             <div class="row mb-3">

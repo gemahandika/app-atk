@@ -82,7 +82,10 @@ if (!isset($_SESSION['admin_akses'])) {
                                                 <td class="th-small text-center">
                                                     <div class="d-flex justify-content-center">
                                                         <a href="#" class="btn btn-success btn-sm " data-bs-toggle="modal" data-bs-target="#basicModal<?= $data['id_barang'] ?>" style="margin-right: 5px;">Stok</a>
-                                                        <a href="edit.php?id=<?= $data['id_barang'] ?>" class="btn btn-warning btn-sm text-white">Edit</a>
+                                                        <a href="edit.php?id=<?= $data['id_barang'] ?>" class="btn btn-warning btn-sm text-white ">Edit</a>
+                                                        <?php if (has_access($allowed_super_admin)) { ?>
+                                                            <a href="delete.php?id=<?= $data['id_barang'] ?>" class="btn btn-danger btn-sm ms-1"><i class="bi bi-trash"></i></a>
+                                                        <?php } ?>
                                                     </div>
                                                 </td>
                                             </tr>
