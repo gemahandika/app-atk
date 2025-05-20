@@ -29,9 +29,9 @@ if (!isset($_SESSION['admin_akses'])) {
                                     <a href="aktivasi.php" type="button" class="btn btn-primary text-white">Aktivasi users</a>
                                 </div>
                             </div>
-                            <table id="example" class="table" style="width:100%">
+                            <table id="example1" class="display nowrap" style="width:100%">
                                 <thead>
-                                    <tr class="table-secondary">
+                                    <tr class="bg-secondary text-white">
                                         <th class="th-small text-center">NO</th>
                                         <th class="th-small text-center">NIP</th>
                                         <th class="th-small text-center">NAMA USER</th>
@@ -58,13 +58,14 @@ if (!isset($_SESSION['admin_akses'])) {
                                             <td class="th-small text-center"><?= $data['username'] ?></td>
                                             <td class="th-small text-center"><?= strtoupper($data['status']) ?></td>
                                             <td class="th-small text-center">
-                                                <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#aksesModal<?= $data['login_id'] ?>">Nonaktif</a>
                                                 <form action="edit.php" method="post" style="display:inline;">
                                                     <input type="hidden" name="id" value="<?= $data['login_id'] ?>">
                                                     <button type="submit" class="btn btn-warning btn-sm">
                                                         <i class="bi bi-pencil"></i> Edit
                                                     </button>
                                                 </form>
+                                                <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#aksesModal<?= $data['login_id'] ?>">Nonaktif</a>
+
                                             </td>
                                         </tr>
 

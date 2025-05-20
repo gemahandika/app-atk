@@ -77,12 +77,12 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
                             </div>
                         </form>
 
-                        <table id="example1" class="display data" style="width:100%">
+                        <table id="example1" class="display nowrap" style="width:100%">
                             <thead>
-                                <tr class="table-info">
+                                <tr class="bg-info text-white">
                                     <th class="small text-center" style="font-size: 12px;">NO</th>
                                     <th class="small text-center" style="font-size: 12px;">KODE BARANG</th>
-                                    <th class="small text-center" style="font-size: 12px;">KATAGORI</th>
+                                    <!-- <th class="small text-center" style="font-size: 12px;">KATAGORI</th> -->
                                     <th class="small text-center" style="font-size: 12px;">TGL PESAN</th>
                                     <th class="small text-center" style="font-size: 12px;">NAMA_BARANG</th>
                                     <th class="small text-center" style="font-size: 12px;">SATUAN</th>
@@ -90,7 +90,7 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
                                     <th class="small text-center" style="font-size: 12px;">HARGA</th>
                                     <th class="small text-center" style="font-size: 12px;">TOTAL HARGA</th>
                                     <th class="small text-center" style="font-size: 12px;">USER ID</th>
-                                    <th class="small text-center" style="font-size: 12px;">NAMA USER</th>
+                                    <th class="small text-center" style="font-size: 12px;">NAMA PEMESAN</th>
                                     <th class="small text-center" style="font-size: 12px;">INVOICE</th>
 
                                 </tr>
@@ -149,18 +149,18 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
                                         // Tampilkan data pesanan
                                 ?>
                                         <tr>
-                                            <td class="th-small text-center"><?= $no++; ?></td>
-                                            <td class="th-small text-center"><?= $data['kode_barang']; ?></td>
-                                            <td class="th-small text-center"><?= $data['katagori']; ?></td>
-                                            <td class="th-small text-center"><?= $data['tgl_pesan']; ?></td>
-                                            <td class="th-small text-center"><?= $data['nama_barang']; ?></td>
-                                            <td class="th-small text-center"><?= $data['satuan']; ?></td>
-                                            <td class="th-small text-center"><?= $data['jumlah']; ?></td>
-                                            <td class="th-small text-center"><?= number_format($data['harga'], 0, ',', '.'); ?></td>
-                                            <td class="th-small text-center"><?= number_format($data['total_harga'], 0, ',', '.'); ?></td>
-                                            <td class="th-small text-center"><?= $data['user_id']; ?></td>
-                                            <td class="th-small text-center"><?= $data['nama_user']; ?></td>
-                                            <td class="th-small text-center"><?= $data['invoice']; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $no++; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['kode_barang']; ?></td>
+                                            <!-- <td class="th-small text-center" style="font-size: 12px;"><?= $data['katagori']; ?></td> -->
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['tgl_pesan']; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['nama_barang']; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['satuan']; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['jumlah']; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= number_format($data['harga'], 0, ',', '.'); ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= number_format($data['total_harga'], 0, ',', '.'); ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['user_id']; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['nama_user']; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['invoice']; ?></td>
 
                                         </tr>
                                 <?php  }

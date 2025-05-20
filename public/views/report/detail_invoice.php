@@ -78,17 +78,17 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
                         </form>
 
 
-                        <table id="example1" class="display data" style="width:100%">
+                        <table id="example1" class="display nowrap" style="width:100%">
                             <thead>
-                                <tr class="table-info">
-                                    <th class="th-small text-center">NO</th>
-                                    <th class="th-small text-center">NO INVOICE</th>
-                                    <th class="th-small text-center">TGL PESAN</th>
-                                    <th class="th-small text-center">USER ID</th>
-                                    <th class="th-small text-center">TOTAL ITEM</th>
-                                    <th class="th-small text-center">TOTAL TAGIHAN</th>
-                                    <th class="th-small text-center">STATUS</th>
-                                    <th class="th-small text-center">PEMBAYARAN</th>
+                                <tr class="bg-info text-white">
+                                    <th class="th-small text-center" style="font-size: 12px;">NO</th>
+                                    <th class="th-small text-center" style="font-size: 12px;">NO INVOICE</th>
+                                    <th class="th-small text-center" style="font-size: 12px;">TGL PESAN</th>
+                                    <th class="th-small text-center" style="font-size: 12px;">USER ID</th>
+                                    <th class="th-small text-center" style="font-size: 12px;">TOTAL ITEM</th>
+                                    <th class="th-small text-center" style="font-size: 12px;">TOTAL TAGIHAN</th>
+                                    <th class="th-small text-center" style="font-size: 12px;">STATUS</th>
+                                    <th class="th-small text-center" style="font-size: 12px;">PEMBAYARAN</th>
                                     <?php if (has_access($allowed_super_admin)) { ?>
                                         <th class="small text-center" style="font-size: 12px;">ACTION</th>
                                     <?php } ?>
@@ -148,15 +148,15 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
                                         // Tampilkan data pesanan
                                 ?>
                                         <tr>
-                                            <td class="th-small text-center"><?= $no++; ?></td>
-                                            <td class="th-small text-center"><?= $data['invoice']; ?></td>
-                                            <td class="th-small text-center"><?= $data['date']; ?></td>
-                                            <td class="th-small text-center"><?= $data['user_id']; ?></td>
-                                            <td class="th-small text-center"><?= $data['total_item']; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $no++; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['invoice']; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['date']; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['user_id']; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['total_item']; ?></td>
                                             <!-- <td class="th-small text-center"><?= $data['total_tagihan']; ?></td> -->
-                                            <td class="th-small"><?= number_format($data['total_tagihan'], 0, ',', '.'); ?></td>
-                                            <td class="th-small text-center"><?= $data['status']; ?></td>
-                                            <td class="th-small text-center">
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= number_format($data['total_tagihan'], 0, ',', '.'); ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;"><?= $data['status']; ?></td>
+                                            <td class="th-small text-center" style="font-size: 12px;">
                                                 <?php
                                                 // Cek apakah pengguna memiliki akses admin atau super_admin
                                                 $is_admin = in_array("admin", $_SESSION['admin_akses']) || in_array("super_admin", $_SESSION['admin_akses']);

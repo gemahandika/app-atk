@@ -38,7 +38,17 @@ $time = date("H:i");
                         <h5 class="card-title" style="border-bottom: 1px solid black;">Form Pesanan</h5>
                         <!-- General Form Elements -->
                         <form action="../../../app/controller/Request.php" method="post">
-                            <input type="hidden" class="form-control" name="nama_user" value="<?= $data2 ?>" readonly>
+                            <?php if (has_access($allowed_admin)) { ?>
+                                <div class="row mb-3">
+                                    <label for="inputText" class="col-sm-3 col-form-label">Pemesan <strong class="text-danger">*</strong></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="nama_user" required>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <?php if (has_access($allowed_agen)) { ?>
+                                <input type="hidden" class="form-control" name="nama_user" value="<?= $data2 ?>" readonly>
+                            <?php } ?>
                             <input type="hidden" class="form-control" name="user_id" value="<?= $user1 ?>" readonly>
 
                             <input type="hidden" class="form-control" name="status" value="KERANJANG" readonly>
