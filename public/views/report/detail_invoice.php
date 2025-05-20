@@ -183,8 +183,6 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
                                         </tr>
                                 <?php
                                     }
-                                } else {
-                                    echo "<tr><td colspan='8' class='text-center'>Tidak ada data ditemukan</td></tr>";
                                 }
                                 ?>
                             </tbody>
