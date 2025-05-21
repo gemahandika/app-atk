@@ -36,10 +36,15 @@ $time = date("H:i");
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title" style="border-bottom: 1px solid black;">Form Pesanan Admin</h5>
+                        <!-- General Form Elements -->
                         <form action="../../../app/controller/Request.php" method="post">
                             <input type="hidden" class="form-control" name="nama_user" value="<?= $data2 ?>" readonly>
                             <input type="hidden" class="form-control" name="user_id" value="<?= $user1 ?>" readonly>
+                            <input type="hidden" class="form-control" name="katagori" value="0" readonly>
                             <input type="hidden" class="form-control" name="status" value="KERANJANG" readonly>
+
+
+
 
                             <div class="row mb-3">
                                 <label class="col-sm-3 col-form-label">Barang <strong class="text-danger">*</strong></label>
@@ -54,12 +59,6 @@ $time = date("H:i");
                                         }
                                         ?>
                                     </select>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-3 col-form-label">Kategori</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="katagori" id="katagori" readonly style="background-color: #fffde7;">
                                 </div>
                             </div>
 
@@ -170,7 +169,7 @@ $time = date("H:i");
                                 <tr class="bg-secondary text-white">
                                     <th class="th-small text-center">NO</th>
                                     <th class="th-small text-center">NAMA PEMESAN</th>
-                                    <th class="th-small text-center">KATAGORI</th>
+                                    <!-- <th class="th-small text-center">KATAGORI</th> -->
                                     <th class="th-small text-center">BARANG</th>
                                     <th class="th-small text-center">SATUAN</th>
                                     <th class="th-small text-center">HARGA</th>
@@ -193,7 +192,7 @@ $time = date("H:i");
                                 <tr>
                                     <td><?= $no; ?></td>
                                     <td class="th-small text-center"><?= $data1['nama_user'] ?></td>
-                                    <td class="th-small text-center"><?= $data1['katagori'] ?></td>
+                                    <!-- <td class="th-small text-center"><?= $data1['katagori'] ?></td> -->
                                     <td class="th-small text-center"><?= $data1['nama_barang'] ?></td>
                                     <td class="th-small text-center"><?= $data1['satuan'] ?></td>
                                     <td class="th-small text-center"><?php echo number_format($data1['harga']) ?></td>

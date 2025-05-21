@@ -84,21 +84,20 @@
     });
 </script>
 
-<!-- Dynamic Dropdown and Item Handling -->
 <script>
     $(document).ready(function() {
         var allItems = <?php echo json_encode($result); ?>;
 
-        $('#katagori').change(function() {
-            var selectedCategory = $(this).val().toLowerCase();
-            var filteredItems = allItems.filter(item => item.katagori.toLowerCase() === selectedCategory);
-
-            $('#namaBarang').empty().append('<option value="">- Pilih Barang -</option>');
-            filteredItems.forEach(item => {
-                $('#namaBarang').append(`<option value="${item.nama_barang}">${item.nama_barang} - Rp. ${parseInt(item.harga).toLocaleString('id-ID')}</option>`);
-            });
+        // Tampilkan semua barang langsung saat halaman dimuat
+        $('#namaBarang').empty().append('<option value="">- Pilih Barang -</option>');
+        allItems.forEach(item => {
+            $('#namaBarang').append(`<option value="${item.nama_barang}">${item.nama_barang} - Rp. ${parseInt(item.harga).toLocaleString('id-ID')}</option>`);
         });
 
+        // Sembunyikan dropdown kategori jika tidak digunakan
+        $('#katagori').closest('.form-group').hide(); // atau sesuaikan dengan struktur HTML
+
+        // Ketika barang dipilih, isi field lainnya
         $('#namaBarang').change(function() {
             var selectedItemName = $(this).val().split(' - ')[0];
             var selectedItem = allItems.find(item => item.nama_barang === selectedItemName);
@@ -107,12 +106,21 @@
                 $('#kode_barang').val(selectedItem.kode_barang);
                 $('#satuan').val(selectedItem.satuan);
                 $('#harga').val(selectedItem.harga);
+
+                // Isi kategori berdasarkan data barang
+                $('#katagori').val(selectedItem.katagori);
+
+                // Tampilkan input kategori jika disembunyikan
+                $('#katagori').closest('.form-group, .row, .mb-3').show();
+
                 calculateTotalHarga();
             } else {
-                $('#kode_barang, #satuan, #harga').val('');
+                $('#kode_barang, #satuan, #harga, #katagori').val('');
                 $('#total_harga').val(0);
+                $('#katagori').closest('.form-group, .row, .mb-3').hide();
             }
         });
+
 
         $('#jumlah').on('input', calculateTotalHarga);
 
@@ -123,6 +131,7 @@
         }
     });
 </script>
+
 
 <!-- Kirim Pesanan Toggle Button -->
 <script>

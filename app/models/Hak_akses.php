@@ -15,10 +15,13 @@ function has_access($roles)
 }
 
 // Daftar akses yang diperbolehkan
-$allowed_pickup = ["super_admin", "admin", "pickup"];
+$allowed_super_admin = ["super_admin"];
 $allowed_admin = ["super_admin", "admin"];
 $allowed_user = ["super_admin", "admin", "user"];
-$allowed_super_admin = ["super_admin"];
+$allowed_pickup = ["super_admin", "admin", "pickup"];
+
+
+
 
 // Hak Akses Untuk Halaman Dashboard Home
 $allowed_agen = ["user"];
