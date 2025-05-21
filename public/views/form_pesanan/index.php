@@ -66,7 +66,7 @@ $time = date("H:i");
                             <input type="hidden" class="form-control" name="kode_barang" id="kode_barang" readonly>
 
                             <div class="row mb-3">
-                                <label for="inputText" class="col-sm-3 col-form-label">Satuan :</label>
+                                <label for="inputText" class="col-sm-3 col-form-label">Satuan</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="satuan" id="satuan" readonly style="background-color: #fffde7;">
                                 </div>
@@ -81,7 +81,7 @@ $time = date("H:i");
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputText" class="col-sm-3 col-form-label">Total Harga :</label>
+                                <label for="inputText" class="col-sm-3 col-form-label">Total Harga</label>
                                 <div class="col-sm-8">
                                     <input type="number" class="form-control" name="total_harga" id="total_harga" value="0" readonly style="background-color: #fffde7;">
                                 </div>
