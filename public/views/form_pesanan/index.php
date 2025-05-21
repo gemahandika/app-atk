@@ -4,7 +4,6 @@ session_start();
 include '../../header.php';
 include '../../../app/models/request_models.php';
 include 'modal.php';
-// session_start(); // Mulai sesi
 $date = date("Y-m-day");
 $time = date("H:i");
 ?>
@@ -35,7 +34,7 @@ $time = date("H:i");
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" style="border-bottom: 1px solid black;">Form Pesanan Admin</h5>
+                        <h5 class="card-title" style="border-bottom: 1px solid black;">Form Pesanan</h5>
                         <form action="../../../app/controller/Request.php" method="post">
                             <input type="hidden" class="form-control" name="nama_user" value="<?= $data2 ?>" readonly>
                             <input type="hidden" class="form-control" name="user_id" value="<?= $user1 ?>" readonly>
@@ -56,6 +55,7 @@ $time = date("H:i");
                                     </select>
                                 </div>
                             </div>
+
                             <div class="row mb-3">
                                 <label class="col-sm-3 col-form-label">Kategori</label>
                                 <div class="col-sm-8">

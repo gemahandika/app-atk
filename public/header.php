@@ -96,17 +96,8 @@ include '../../../app/models/header_models.php';
                     </a>
                 </li><!-- End Dashboard Nav -->
 
-                <?php
-                $akses = $_SESSION['admin_akses'];
-
-                if (in_array("admin", $akses) || in_array("super_admin", $akses)) {
-                    $link_pesanan = "../form_pesanan/form_admin.php";
-                } else {
-                    $link_pesanan = "../form_pesanan/index.php";
-                }
-                ?>
                 <li class="nav-item" style="border-bottom: 1px solid rgba(0, 0, 0, 0.3);">
-                    <a class="nav-link collapsed" href="<?= $link_pesanan ?>">
+                    <a class="nav-link collapsed" href="../form_pesanan/index.php">
                         <i class="ri-shopping-cart-2-line"></i>
                         <span>Buat Pesanan</span>
                     </a>
