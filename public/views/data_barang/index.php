@@ -42,7 +42,7 @@ if (!isset($_SESSION['admin_akses'])) {
                                             <th class="th-small text-center">HARGA</th>
                                             <!-- <th class="th-small text-center">STATUS</th> -->
                                             <th class="th-small text-center">STOK</th>
-                                            <th class="th-small text-center">MIN. ORDER</th>
+                                            <!-- <th class="th-small text-center">MIN. ORDER</th> -->
                                             <th class="th-small text-center">BUFFER</th>
                                             <th class="th-small text-center">KETERANGAN</th>
                                             <th class="th-small text-center">ACTION</th>
@@ -76,7 +76,7 @@ if (!isset($_SESSION['admin_akses'])) {
                                                 <td class="th-small text-center"><?= number_format($data['harga'], 0, ',', '.') ?></td>
                                                 <!-- <td class="th-small text-center"><?= $data['status_barang'] ?></td> -->
                                                 <td class="th-small text-center"><?= $stok_barang ?></td>
-                                                <td class="th-small text-center"><?= $data['min_order'] ?></td>
+                                                <!-- <td class="th-small text-center"><?= $data['min_order'] ?></td> -->
                                                 <td class="th-small text-center"><?= $buffer ?></td>
                                                 <td class="th-small text-center"><?= $keterangan ?></td>
                                                 <td class="th-small text-center">
