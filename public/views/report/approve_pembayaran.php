@@ -13,7 +13,7 @@ if (!isset($_SESSION['admin_akses'])) {
     include '../../../app/models/request_models.php';
     // include 'modal.php';
     // session_start(); // Mulai sesi
-    $date = date("Y-m-d");
+    $date_for_db = date("Y-m-d H:i:s");
     $time = date("H:i");
 ?>
 
@@ -72,13 +72,13 @@ if (!isset($_SESSION['admin_akses'])) {
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="inputText" class="col-sm-3 col-form-label fw-bold">Tanggal Pesan :</label>
+                                        <label for="inputText" class="col-sm-3 col-form-label fw-bold">Tgl Pesan :</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" name="tgl_proses" id="tgl_proses" value="<?= $data['tgl_proses'] ?>" readonly>
+                                            <input type="text" class="form-control" name="tgl_proses" id="tgl_proses" value="<?= $data['date'] ?>" readonly>
                                         </div>
                                     </div>
                                     <div class=" row mb-3">
-                                        <label for="inputText" class="col-sm-3 col-form-label fw-bold">Tanggal Terima :</label>
+                                        <label for="inputText" class="col-sm-3 col-form-label fw-bold">Tgl Terima :</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" name="tgl_terima" id="tgl_terima" value="<?= $data['tgl_terima'] ?>" readonly>
                                         </div>

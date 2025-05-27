@@ -60,57 +60,7 @@ $data2 = $data["invoice"];
                                     <td class="th-small text-center"><?php echo number_format($data1['harga']) ?></td>
                                     <td class="th-small text-center"><?= $data1['jumlah'] ?></td>
                                     <td class="th-small text-center text-success"><strong><?php echo number_format($data1['total_harga']) ?></strong></td>
-                                    <!-- <td class="small text-left">
-                                        <a href="#" class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#basicModal<?= $data1['id_keranjang'] ?>">Edit Jumlah</a>
-                                    </td> -->
                                 </tr>
-                                <!-- Modal -->
-                                <div class="modal fade" id="basicModal<?= $data1['id_keranjang'] ?>" tabindex="-1">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <form action="../../../app/controller/Request.php" method="post">
-                                                <div class="modal-header bg-success text-white">
-                                                    <h5 class="modal-title ">Edit Jumlah Pesanan</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <input type="text" class="form-control" name="id" value="<?= $data1['id_keranjang'] ?>" readonly required>
-                                                    <input type="text" class="form-control" name="invoice" value="<?= $data1['invoice'] ?>" readonly required>
-
-                                                    <div class="row mb-3">
-                                                        <label class="col-sm-3 col-form-label">Barang :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" class="form-control" id="nama_barang_<?= $data1['id_keranjang'] ?>" name="nama_barang" value="<?= $data1['nama_barang'] ?>" readonly required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-3">
-                                                        <label class="col-sm-3 col-form-label">Jumlah :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="number" class="form-control" id="jumlah_<?= $data1['id_keranjang'] ?>" name="jumlah" value="<?= $data1['jumlah'] ?>" required oninput="hitungTotal(<?= $data1['id_keranjang'] ?>)">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-3">
-                                                        <label for="inputText" class="col-sm-3 col-form-label">Harga :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="number" class="form-control" id="harga_<?= $data1['id_keranjang'] ?>" name="harga" value="<?= $data1['harga'] ?>" readonly>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-3">
-                                                        <label for="inputText" class="col-sm-3 col-form-label">Total Harga :</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="number" class="form-control" name="total_harga" id="total_harga_<?= $data1['id_keranjang'] ?>" value="<?= $data1['total_harga'] ?>" readonly>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" name="edit" class="btn btn-success">Update</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div><!-- End Basic Modal-->
                             <?php } ?>
                         </table>
                         <form action="../../../app/controller/Terima.php" method="post">
