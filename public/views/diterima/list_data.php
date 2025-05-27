@@ -22,8 +22,10 @@ $time = date("H:i");
                                     <th class="th-small text-center">INVOICE</th>
                                     <th class="th-small text-center">TOTAL ITEM</th>
                                     <th class="th-small text-center">TOTAL TAGIHAN</th>
+                                    <th class="th-small text-center">TGL PESAN</th>
                                     <th class="th-small text-center">USER PICKUP</th>
-                                    <th class="th-small text-center">TANGGAL</th>
+                                    <th class="th-small text-center">TGL PICKUP</th>
+                                    <th class="th-small text-center">TGL TERIMA</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,8 +51,10 @@ $time = date("H:i");
                                         <td class="th-small text-center"><?= $data['invoice'] ?></td>
                                         <td class="th-small text-center"><?= $data['total_item'] ?></td>
                                         <td class="th-small text-center"><?= $data['total_tagihan'] ?></td>
-                                        <td class="th-small text-center"><?= $data['nama_pickup'] ?></td>
                                         <td class="th-small text-center"><?= $data['date'] ?></td>
+                                        <td class="th-small text-center"><?= $data['nama_pickup'] ?></td>
+                                        <td class="th-small text-center"><?= $data['tgl_pickup'] ?></td>
+                                        <td class="th-small text-center"><?= $data['tgl_terima'] ?></td>
                                     </tr>
                                 <?php } ?>
                             </tbody>

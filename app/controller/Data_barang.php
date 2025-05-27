@@ -34,7 +34,7 @@ if (isset($_POST['add'])) {
     $tambah_stok = trim(mysqli_real_escape_string($koneksi, $_POST['tambah_stok']));
     $tgl_terima = trim(mysqli_real_escape_string($koneksi, $_POST['tgl_terima']));
     $awb = trim(mysqli_real_escape_string($koneksi, $_POST['awb']));
-    $keteranagn = trim(mysqli_real_escape_string($koneksi, $_POST['keteranagn']));
+    $keteranagn = trim(mysqli_real_escape_string($koneksi, $_POST['keterangan']));
 
     //update tb keranjang (invoice)
     mysqli_query($koneksi, "UPDATE tb_barang SET stok_barang ='$total_stok' WHERE id_barang='$id'");

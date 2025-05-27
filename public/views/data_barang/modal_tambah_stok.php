@@ -1,8 +1,12 @@
 <?php
 include '../../../app/config/koneksi.php';
-
 $id_barang = $_GET['id'];
 $data = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tb_barang WHERE id_barang='$id_barang'"));
+
+if (!$data) {
+    echo "<div class='alert alert-danger'>Data tidak ditemukan.</div>";
+    exit;
+}
 
 $date = date("Y-m-d");
 ?>
@@ -25,7 +29,7 @@ $date = date("Y-m-d");
             <label class="col-sm-3 col-form-label">Stok Awal:</label>
             <div class="col-sm-8">
                 <!-- Gunakan id yang unik untuk setiap modal -->
-                <input type="number" class="form-control" id="stok_awal<?= $data['id_barang'] ?>" name="stok_awal" value="<?= $data['stok_barang'] ?>" readonly required style="background-color: #fffde7;">
+                <input type="number" class="form-control" id="stok_awal<?= $data['id_barang'] ?>" name="stok_awal" value="<?= $data['stok_barang'] ?? 0 ?>" readonly required style="background-color: #fffde7;">
             </div>
         </div>
         <div class="row mb-3">
@@ -73,7 +77,7 @@ $date = date("Y-m-d");
         <div class="row mb-3">
             <label class="col-sm-3 col-form-label">Keterangan :</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="keterangan<?= $data['id_barang'] ?>" name="keteranagn" required>
+                <input type="text" class="form-control" id="keterangan<?= $data['id_barang'] ?>" name="keterangan" required>
             </div>
         </div>
         <div class="row mb-3">

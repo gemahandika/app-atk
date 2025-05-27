@@ -68,7 +68,6 @@ $time = date("H:i");
                                             </td>
                                         <?php } ?>
                                     </tr>
-
                                     <!-- Script untuk setiap tombol PRINT -->
                                     <script>
                                         document.getElementById("<?= $printBtnId ?>").addEventListener("click", function() {
@@ -76,12 +75,9 @@ $time = date("H:i");
                                             document.getElementById("<?= $printFormId ?>").submit();
                                         });
                                     </script>
-
                                 <?php } ?>
                             </tbody>
                         </table>
-
-                        <!-- End Primary Color Bordered Table -->
                     </div>
                 </div>
             </div>

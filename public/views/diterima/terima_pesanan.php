@@ -2,7 +2,7 @@
 session_name("dashboard_atk_session");
 session_start();
 include '../../header.php';
-$date = date("Y-m-d");
+$date_for_db = date("Y-m-d H:i:s");
 $time = date("H:i");
 // include 'cek_status.php';
 $invoice = isset($_GET['invoice']) ? $_GET['invoice'] : '';
@@ -64,7 +64,7 @@ $data2 = $data["invoice"];
                             <?php } ?>
                         </table>
                         <form action="../../../app/controller/Terima.php" method="post">
-                            <input type="hidden" name="tgl_terima" value="<?= $date ?>" readonly>
+                            <input type="hidden" name="tgl_terima" value="<?= $date_for_db ?>" readonly>
                             <input type="hidden" name="status" value="DITERIMA" readonly>
                             <input type="hidden" name="invoice" value="<?= $data1['invoice'] ?>" readonly required>
                             <input type="hidden" name="total_tagihan" id="total_tagihan" value="<?= $total_tagihan ?>" readonly>

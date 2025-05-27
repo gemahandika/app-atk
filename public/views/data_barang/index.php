@@ -172,17 +172,19 @@ if (!isset($_SESSION['admin_akses'])) {
         });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.open-stok-modal').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    var id_barang = this.getAttribute('data-id');
-                    fetch('modal_tambah_stok.php?id=' + id_barang)
-                        .then(response => response.text())
-                        .then(html => {
-                            document.getElementById('modalStokContent').innerHTML = html;
-                        });
-                });
-            });
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.classList.contains('open-stok-modal')) {
+                e.preventDefault(); // hindari default link behavior jika ada
+                var id_barang = e.target.getAttribute('data-id');
+                fetch('modal_tambah_stok.php?id=' + id_barang)
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById('modalStokContent').innerHTML = html;
+                        // Trigger bootstrap modal show manually (optional, just in case)
+                        var modal = new bootstrap.Modal(document.getElementById('modalStok'));
+                        modal.show();
+                    });
+            }
         });
     </script>
 
