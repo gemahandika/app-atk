@@ -160,7 +160,7 @@ $data2 = $data["invoice"];
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- barang terima -->
-<script>
+<!-- <script>
     function hitungTotal(id_keranjang) {
         var jumlah = document.getElementById('jumlah_' + id_keranjang).value;
         var harga = document.getElementById('harga_' + id_keranjang).value;
@@ -184,6 +184,27 @@ $data2 = $data["invoice"];
         // Tampilkan total tagihan di input total_tagihan
         document.getElementById('total_tagihan').value = totalTagihan;
     }
+</script> -->
+
+<!-- Inisialisasi DataTables -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('#example1')) {
+            new DataTable('#example1', {
+                paging: true,
+                scrollCollapse: true,
+                scrollY: '335px'
+            });
+        }
+
+        if (document.querySelector('#example')) {
+            new DataTable('#example', {
+                paging: true,
+                scrollCollapse: false
+                // scrollY: '350px'
+            });
+        }
+    });
 </script>
 
 </body>

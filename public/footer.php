@@ -58,20 +58,6 @@
     });
 </script>
 
-
-
-
-
-<!-- Pembayaran Otomatis -->
-<script>
-    function updatePembayaran() {
-        var totalTagihan = document.getElementById('totalTagihan').value;
-        document.getElementById('pembayaran').value = totalTagihan > 0 ? 'OTS' : 'DONE';
-    }
-
-    window.onload = updatePembayaran;
-</script>
-
 <!-- Inisialisasi DataTables -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {

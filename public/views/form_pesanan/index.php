@@ -338,6 +338,25 @@ $time = date("H:i");
         }
     });
 </script>
+<!-- Select2 Initialization -->
+<script>
+    $(document).ready(function() {
+        $('.select2').select2({
+            width: '100%',
+            placeholder: '-- Pilih Data --',
+            allowClear: true
+        });
+    });
+</script>
+<!-- Pembayaran Otomatis -->
+<script>
+    function updatePembayaran() {
+        var totalTagihan = document.getElementById('totalTagihan').value;
+        document.getElementById('pembayaran').value = totalTagihan > 0 ? 'OTS' : 'DONE';
+    }
+
+    window.onload = updatePembayaran;
+</script>
 </body>
 
 </html>

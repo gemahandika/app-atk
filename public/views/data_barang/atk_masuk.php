@@ -57,68 +57,7 @@ if (!isset($_SESSION['admin_akses'])) {
                                             <td class="text-center" style="font-size: 12px;"><?= $data['tgl_terima'] ?></td>
                                             <td class="text-center" style="font-size: 12px;"><?= $data['awb'] ?></td>
                                             <td class="text-center" style="font-size: 12px;"><?= $data['keterangan'] ?></td>
-                                            <!-- <td class="text-center" style="font-size: 12px;">
-                                            <div class="d-flex justify-content-center">
-                                                <a href="#" class="btn btn-success btn-sm " data-bs-toggle="modal" data-bs-target="#basicModal<?= $data['id_barang'] ?>" style="margin-right: 5px;">Stok</a>
-                                                <a href="edit.php?id=<?= $data['id_barang'] ?>" class="btn btn-warning btn-sm ">Edit</a>
-                                            </div>
-                                        </td> -->
                                         </tr>
-
-                                        <!-- Modal tambah stok -->
-                                        <div class="modal fade" id="basicModal<?= $data['id_barang'] ?>" tabindex="-1">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <form action="../../../app/controller/Data_barang.php" method="post">
-                                                        <div class="modal-header bg-success text-white">
-                                                            <h5 class="modal-title">Tambah Stok Barang</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <!-- Ganti name="id" menjadi name="id_barang" untuk menghindari konflik -->
-                                                            <input type="hidden" class="form-control" name="id_barang" value="<?= $data['id_barang'] ?>" readonly required>
-                                                            <div class="row mb-3">
-                                                                <label class="col-sm-3 col-form-label">Stok Awal:</label>
-                                                                <div class="col-sm-8">
-                                                                    <!-- Gunakan id yang unik untuk setiap modal -->
-                                                                    <input type="number" class="form-control" id="stok_awal<?= $data['id_barang'] ?>" name="stok_awal" value="<?= $data['stok_barang'] ?>" readonly required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mb-3">
-                                                                <label class="col-sm-3 col-form-label">Kode:</label>
-                                                                <div class="col-sm-8">
-                                                                    <input type="text" class="form-control" id="kode_barang<?= $data['id_barang'] ?>" name="kode_barang" value="<?= $data['kode_barang'] ?>" readonly required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mb-3">
-                                                                <label class="col-sm-3 col-form-label">Nama :</label>
-                                                                <div class="col-sm-8">
-                                                                    <input type="text" class="form-control" id="nama_barang<?= $data['id_barang'] ?>" name="nama_barang" value="<?= $data['nama_barang'] ?>" readonly required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mb-3">
-                                                                <label class="col-sm-3 col-form-label">Tambah :</label>
-                                                                <div class="col-sm-8">
-                                                                    <input type="number" class="form-control" id="tambah_stok<?= $data['id_barang'] ?>" name="tambah_stok" placeholder="0" required oninput="hitungTotal(<?= $data['id_barang'] ?>)">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mb-3">
-                                                                <label class="col-sm-3 col-form-label">Total :</label>
-                                                                <div class="col-sm-8">
-                                                                    <input type="number" class="form-control" id="total_stok<?= $data['id_barang'] ?>" name="total_stok" placeholder="0" readonly required>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" name="add_stok" class="btn btn-success">Tambah Stok</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
                                     <?php } ?>
                                 </tbody>
                             </table>
@@ -128,9 +67,35 @@ if (!isset($_SESSION['admin_akses'])) {
                 </div>
             </div>
         </section>
-
     </main><!-- End #main -->
-    <script>
+
+    <!-- ======= Footer ======= -->
+    <!-- Vendor JS Files -->
+    <script src="../../../app/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="../../../app/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../app/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="../../../app/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="../../../app/assets/vendor/quill/quill.js"></script>
+    <script src="../../../app/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="../../../app/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="../../../app/assets/js/main.js"></script>
+
+    <!-- CDN JS Libraries -->
+
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+
+    <!-- Tambahkan SweetAlert CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- <script>
         function hitungTotal(id_barang) {
             // Ambil nilai stok awal dan nilai tambah berdasarkan id_barang
             var stokAwal = parseInt(document.getElementById('stok_awal' + id_barang).value) || 0;
@@ -142,9 +107,31 @@ if (!isset($_SESSION['admin_akses'])) {
             // Masukkan hasil ke input total stok
             document.getElementById('total_stok' + id_barang).value = totalStok;
         }
+    </script> -->
+    <!-- Inisialisasi DataTables -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.querySelector('#example1')) {
+                new DataTable('#example1', {
+                    paging: true,
+                    scrollCollapse: true,
+                    scrollY: '335px'
+                });
+            }
+
+            if (document.querySelector('#example')) {
+                new DataTable('#example', {
+                    paging: true,
+                    scrollCollapse: false
+                    // scrollY: '350px'
+                });
+            }
+        });
     </script>
 
-<?php
-    include '../../footer.php';
-}
-?>
+
+<?php } ?>
+
+</body>
+
+</html>

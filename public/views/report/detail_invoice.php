@@ -197,6 +197,32 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
 
 </main><!-- End #main -->
 
+<!-- ======= Footer ======= -->
+<!-- Vendor JS Files -->
+<script src="../../../app/assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="../../../app/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../../app/assets/vendor/chart.js/chart.umd.js"></script>
+<script src="../../../app/assets/vendor/echarts/echarts.min.js"></script>
+<script src="../../../app/assets/vendor/quill/quill.js"></script>
+<script src="../../../app/assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="../../../app/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="../../../app/assets/js/main.js"></script>
+
+<!-- CDN JS Libraries -->
+
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+
+<!-- Tambahkan SweetAlert CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     document.querySelectorAll('.getInvoice').forEach(button => {
         button.addEventListener('click', function(event) {
@@ -224,8 +250,26 @@ $user_id1 = isset($_GET['user_id']) ? mysqli_real_escape_string($koneksi, $_GET[
     });
 </script>
 
+<!-- Inisialisasi DataTables -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('#example1')) {
+            new DataTable('#example1', {
+                paging: true,
+                scrollCollapse: true,
+                scrollY: '335px'
+            });
+        }
 
+        if (document.querySelector('#example')) {
+            new DataTable('#example', {
+                paging: true,
+                scrollCollapse: false
+                // scrollY: '350px'
+            });
+        }
+    });
+</script>
+</body>
 
-<?php
-include '../../footer.php';
-?>
+</html>

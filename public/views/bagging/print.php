@@ -5,11 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Print Request Barang ATK</title>
-    <link href="../../../app/assets/img/favicon.png" rel="icon">
+    <link href="../../../app/assets/img/JNE.png" rel="icon">
     <link href="../../../app/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../app/assets/css/style_export.css">
-
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
@@ -140,9 +138,9 @@
         <table class="table table-bordered signature-box mt-4">
             <thead>
                 <tr>
-                    <th>Distribusi</th>
-                    <th>Tim Pickup</th>
-                    <th>Diterima</th>
+                    <th class="text-center">Distribusi</th>
+                    <th class="text-center">Tim Pickup</th>
+                    <th class="text-center">Diterima</th>
                 </tr>
             </thead>
             <tbody>
