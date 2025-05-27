@@ -74,6 +74,7 @@ if (!isset($_SESSION['admin_akses'])) {
                                                                         <option value="admin">ADMIN</option>
                                                                         <option value="user">USER</option>
                                                                         <option value="pickup">PICKUP</option>
+                                                                        <option value="bag">BAGGING</option>
                                                                     </select>
                                                                 </div><br>
                                                             </div>

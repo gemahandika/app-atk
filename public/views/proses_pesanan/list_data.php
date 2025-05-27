@@ -14,7 +14,7 @@ $time = date("H:i");
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title" style="border-bottom: 1px solid black;">List Data - Proses ATK <?php if (has_access($allowed_admin)) { ?> Masuk <?php } ?></h5>
-                        <table id="example" class="display nowrap" style="width:100%">
+                        <table id="example1" class="display nowrap" style="width:100%">
                             <thead>
                                 <tr class="bg-success text-white">
                                     <th class="th-small text-center">NO</th>

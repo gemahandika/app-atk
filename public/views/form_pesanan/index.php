@@ -4,7 +4,7 @@ session_start();
 include '../../header.php';
 include '../../../app/models/request_models.php';
 include 'modal.php';
-$date = date("Y-m-day");
+$date_for_db = date("Y-m-d H:i:s");
 $time = date("H:i");
 ?>
 
@@ -131,8 +131,8 @@ $time = date("H:i");
                                 <input type="hidden" class="form-control" name="nama_user" value="<?= $data2 ?>" readonly>
                                 <input type="hidden" class="form-control" name="user_id" value="<?= $user1 ?>" readonly>
                                 <input type="hidden" class="form-control" name="status" value="KERANJANG" readonly>
-                                <input type="hidden" class="form-control" name="status1" value="DIKIRIM" readonly>
-                                <input type="hidden" class="form-control" name="date" value="<?= $date ?>" readonly>
+                                <input type="hidden" class="form-control" name="status1" value="DIPESAN" readonly>
+                                <input type="hidden" class="form-control" id="datetime" name="date" readonly>
                                 <input type="hidden" class="form-control" name="invoice" value="<?php echo $noInvoice; ?>" readonly>
 
                                 <div class="row mb-3">
@@ -151,7 +151,7 @@ $time = date("H:i");
 
                                 <div class="row mb-0">
                                     <div class="col-sm-10">
-                                        <button type="submit" id="kirim_pesanan" name="kirim_pesanan" class="btn btn-success">Kirim Pesanan</button>
+                                        <button type="submit" id="setTimeBtn" name="kirim_pesanan" class="btn btn-success">Kirim Pesanan</button>
                                     </div>
                                 </div>
                             </form><!-- End General Form Elements -->
@@ -159,6 +159,8 @@ $time = date("H:i");
                     </div>
                 </div>
             </div>
+
+
 
             <div class="col-lg-6">
                 <div class="card">
@@ -212,9 +214,98 @@ $time = date("H:i");
         </div>
     </section>
 </main>
+<!-- ======= Footer ======= -->
+<!-- Vendor JS Files -->
+<script src="../../../app/assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="../../../app/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../../app/assets/vendor/chart.js/chart.umd.js"></script>
+<script src="../../../app/assets/vendor/echarts/echarts.min.js"></script>
+<script src="../../../app/assets/vendor/quill/quill.js"></script>
+<script src="../../../app/assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="../../../app/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="../../../app/assets/js/main.js"></script>
+
+<!-- CDN JS Libraries -->
+
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+
+<!-- Tambahkan SweetAlert CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function() {
+        var allItems = <?php echo json_encode($result); ?>;
+
+        // Tampilkan semua barang langsung saat halaman dimuat
+        $('#namaBarang').empty().append('<option value="">- Pilih Barang -</option>');
+        allItems.forEach(item => {
+            $('#namaBarang').append(`<option value="${item.nama_barang}">${item.nama_barang} - Rp. ${parseInt(item.harga).toLocaleString('id-ID')}</option>`);
+        });
+
+        // Sembunyikan dropdown kategori jika tidak digunakan
+        $('#katagori').closest('.form-group').hide(); // atau sesuaikan dengan struktur HTML
+
+        // Ketika barang dipilih, isi field lainnya
+        $('#namaBarang').change(function() {
+            var selectedItemName = $(this).val().split(' - ')[0];
+            var selectedItem = allItems.find(item => item.nama_barang === selectedItemName);
+
+            if (selectedItem) {
+                $('#kode_barang').val(selectedItem.kode_barang);
+                $('#satuan').val(selectedItem.satuan);
+                $('#harga').val(selectedItem.harga);
+
+                // Isi kategori berdasarkan data barang
+                $('#katagori').val(selectedItem.katagori);
+
+                // Tampilkan input kategori jika disembunyikan
+                $('#katagori').closest('.form-group, .row, .mb-3').show();
+
+                calculateTotalHarga();
+            } else {
+                $('#kode_barang, #satuan, #harga, #katagori').val('');
+                $('#total_harga').val(0);
+                $('#katagori').closest('.form-group, .row, .mb-3').hide();
+            }
+        });
 
 
+        $('#jumlah').on('input', calculateTotalHarga);
 
-<?php
-include '../../footer.php';
-?>
+        function calculateTotalHarga() {
+            var harga = parseFloat($('#harga').val()) || 0;
+            var jumlah = parseInt($('#jumlah').val()) || 0;
+            $('#total_harga').val(harga * jumlah);
+        }
+    });
+</script>
+<!-- Inisialisasi DataTables -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('#example1')) {
+            new DataTable('#example1', {
+                paging: true,
+                scrollCollapse: true,
+                scrollY: '335px'
+            });
+        }
+
+        if (document.querySelector('#example')) {
+            new DataTable('#example', {
+                paging: true,
+                scrollCollapse: false
+                // scrollY: '350px'
+            });
+        }
+    });
+</script>
+</body>
+
+</html>

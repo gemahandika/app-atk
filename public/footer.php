@@ -1,5 +1,4 @@
 <!-- ======= Footer ======= -->
-
 <!-- Vendor JS Files -->
 <script src="../../../app/assets/vendor/apexcharts/apexcharts.min.js"></script>
 <script src="../../../app/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -13,7 +12,7 @@
 <script src="../../../app/assets/js/main.js"></script>
 
 <!-- CDN JS Libraries -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -25,32 +24,7 @@
 <!-- Tambahkan SweetAlert CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- barang terima -->
-<script>
-    function hitungTotal(id_keranjang) {
-        var jumlah = document.getElementById('jumlah_' + id_keranjang).value;
-        var harga = document.getElementById('harga_' + id_keranjang).value;
-        var total_harga = jumlah * harga;
 
-        // Tampilkan hasil di input total_harga
-        document.getElementById('total_harga_' + id_keranjang).value = total_harga;
-
-        // Update total tagihan setelah perubahan
-        updateTotalTagihan();
-    }
-
-    function updateTotalTagihan() {
-        var totalTagihan = 0;
-
-        <?php foreach ($result1 as $data1) { ?>
-            var totalHarga = document.getElementById('total_harga_<?= $data1['id_keranjang'] ?>').value;
-            totalTagihan += parseFloat(totalHarga);
-        <?php } ?>
-
-        // Tampilkan total tagihan di input total_tagihan
-        document.getElementById('total_tagihan').value = totalTagihan;
-    }
-</script>
 <!-- ------------------------------- -->
 <!-- Edit Data Barang -->
 <script>
@@ -84,53 +58,7 @@
     });
 </script>
 
-<script>
-    $(document).ready(function() {
-        var allItems = <?php echo json_encode($result); ?>;
 
-        // Tampilkan semua barang langsung saat halaman dimuat
-        $('#namaBarang').empty().append('<option value="">- Pilih Barang -</option>');
-        allItems.forEach(item => {
-            $('#namaBarang').append(`<option value="${item.nama_barang}">${item.nama_barang} - Rp. ${parseInt(item.harga).toLocaleString('id-ID')}</option>`);
-        });
-
-        // Sembunyikan dropdown kategori jika tidak digunakan
-        $('#katagori').closest('.form-group').hide(); // atau sesuaikan dengan struktur HTML
-
-        // Ketika barang dipilih, isi field lainnya
-        $('#namaBarang').change(function() {
-            var selectedItemName = $(this).val().split(' - ')[0];
-            var selectedItem = allItems.find(item => item.nama_barang === selectedItemName);
-
-            if (selectedItem) {
-                $('#kode_barang').val(selectedItem.kode_barang);
-                $('#satuan').val(selectedItem.satuan);
-                $('#harga').val(selectedItem.harga);
-
-                // Isi kategori berdasarkan data barang
-                $('#katagori').val(selectedItem.katagori);
-
-                // Tampilkan input kategori jika disembunyikan
-                $('#katagori').closest('.form-group, .row, .mb-3').show();
-
-                calculateTotalHarga();
-            } else {
-                $('#kode_barang, #satuan, #harga, #katagori').val('');
-                $('#total_harga').val(0);
-                $('#katagori').closest('.form-group, .row, .mb-3').hide();
-            }
-        });
-
-
-        $('#jumlah').on('input', calculateTotalHarga);
-
-        function calculateTotalHarga() {
-            var harga = parseFloat($('#harga').val()) || 0;
-            var jumlah = parseInt($('#jumlah').val()) || 0;
-            $('#total_harga').val(harga * jumlah);
-        }
-    });
-</script>
 
 
 <!-- Kirim Pesanan Toggle Button -->
@@ -220,6 +148,28 @@
         $('#' + tableID).DataTable().button('.buttons-print').trigger();
     }
 </script>
+
+<!-- Script untuk ambil waktu sekarang saat tombol diklik -->
+<script>
+    document.getElementById('setTimeBtn').addEventListener('click', function() {
+        const now = new Date();
+
+        // Format: YYYY-MM-DD HH:mm:ss
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+        // Isi ke input
+        document.getElementById('datetime').value = formattedDateTime;
+    });
+</script>
+
+
 
 </body>
 

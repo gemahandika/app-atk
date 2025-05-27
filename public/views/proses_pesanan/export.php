@@ -34,7 +34,7 @@ if ($invoice) {
         $status = $row['status'];
 
         // Cek status pesanan
-        if ($status === 'DIKIRIM') {
+        if ($status === 'DIPESAN') {
             // Jika status DIKIRIM, kembali ke halaman sebelumnya
             echo "<script>alert('PESANAN BELUM DIGENERATE, SILAHKAN GENERATE TERLEBIH DULU.'); window.close();</script>";
             exit;

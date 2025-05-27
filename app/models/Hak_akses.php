@@ -19,7 +19,7 @@ $allowed_super_admin = ["super_admin"];
 $allowed_admin = ["super_admin", "admin"];
 $allowed_user = ["super_admin", "admin", "user"];
 $allowed_pickup = ["super_admin", "admin", "pickup"];
-
+$allowed_bag = ["super_admin", "admin", "bag"];
 
 
 

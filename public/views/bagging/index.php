@@ -1,33 +1,37 @@
 <?php
 session_name("dashboard_atk_session");
 session_start();
-if (!isset($_SESSION['admin_akses'])) {
-    header("Location:../page_error/error.php");
-    exit();
-} else if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_SESSION['admin_akses'])) {
+
+include '../../header.php';
+if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_SESSION['admin_akses']) && !in_array("bag", $_SESSION['admin_akses'])) {
     header("Location:../page_error/error.php");
     exit();
 } else {
-    include '../../header.php';
     $date = date("Y-m-d");
     $time = date("H:i");
+    // include 'modal.php';
 ?>
+
     <main id="main" class="main">
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title" style="border-bottom: 1px solid black;">Proses ATK Masuk</h5>
+                            <h5 class="card-title" style="border-bottom: 1px solid black;">List Data - Generate ATK </h5>
                             <div class="row mb-3 d-flex align-items-center">
                                 <div class="col-sm-4 mt-2">
-                                    <a href="list_data.php" type="submit" class="btn btn-success">List Data</a>
+                                    <?php
+                                    if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("bag", $_SESSION['admin_akses'])) { ?>
+                                        <a href="ho_bag.php" type="submit" class="btn btn-primary">Proses Bagging</a>
+                                    <?php } ?>
+                                    <a href="list_data_bag.php" type="submit" class="btn btn-secondary">List Data</a>
                                 </div>
                             </div>
                             <table id="example1" class="display nowrap" style="width:100%">
                                 <thead>
-                                    <tr class="bg-success text-white">
-                                        <th class="th-small text-center">No</th>
+                                    <tr class="bg-primary text-white">
+                                        <th class="th-small text-center">NO</th>
                                         <th class="th-small text-center">NAMA</th>
                                         <th class="th-small text-center">INVOICE</th>
                                         <th class="th-small text-center">TOTAL ITEM</th>
@@ -35,27 +39,21 @@ if (!isset($_SESSION['admin_akses'])) {
                                         <th class="th-small text-center">USER ID</th>
                                         <th class="th-small text-center">TANGGAL</th>
                                         <th class="th-small text-center">STATUS</th>
-                                        <?php if (has_access($allowed_admin)) { ?>
-                                            <th class="th-small text-center">ACTION</th>
-                                        <?php } ?>
+                                        <th class="th-small text-center">ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     $no = 0;
-                                    // Query untuk menampilkan data dengan status 'DIKIRIM' atau 'GENERATE' dengan tanggal hari ini
-                                    $sql = mysqli_query(
-                                        $koneksi,
-                                        "SELECT * FROM tb_pesanan WHERE status = 'DIPESAN' ORDER BY id_pesanan ASC"
-                                    ) or die(mysqli_error($koneksi));
+                                    $sql = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'GENERATE' ORDER BY id_pesanan ASC") or die(mysqli_error($koneksi));
                                     $result = array();
                                     while ($data = mysqli_fetch_array($sql)) {
                                         $result[] = $data;
                                     }
-
                                     foreach ($result as $data) {
                                         $no++;
-                                        // Tampilkan data sesuai yang diinginkan
+                                        $printFormId = "printForm" . $no;
+                                        $printBtnId = "printBtn" . $no;
                                     ?>
                                         <tr>
                                             <td class="th-small text-center"><?= $no; ?></td>
@@ -66,17 +64,28 @@ if (!isset($_SESSION['admin_akses'])) {
                                             <td class="th-small text-center"><?= $data['user_id'] ?></td>
                                             <td class="th-small text-center"><?= $data['date'] ?></td>
                                             <td class="th-small text-center"><?= $data['status'] ?></td>
-                                            <?php if (has_access($allowed_admin)) { ?>
-                                                <td class="th-small text-center">
-                                                    <a href="generate_pesanan.php?invoice=<?= $data['invoice'] ?>&status=<?= $data['status'] ?>" class="btn btn-success btn-sm">
-                                                        <i class="bi bi-search"></i> List Pesanan
-                                                    </a>
-                                                </td>
-                                            <?php } ?>
+                                            <td class="th-small text-center">
+                                                <!-- Form tersembunyi untuk mengirim data POST -->
+                                                <form id="<?= $printFormId ?>" method="POST" action="print.php" target="_blank" style="display: none;">
+                                                    <input type="hidden" name="invoice" value="<?= $data['invoice']; ?>">
+                                                </form>
+                                                <!-- Tombol PRINT -->
+                                                <button id="<?= $printBtnId ?>" class="btn btn-danger text-white btn-sm">PRINT</button>
+                                            </td>
                                         </tr>
+
+                                        <!-- Script untuk setiap tombol PRINT -->
+                                        <script>
+                                            document.getElementById("<?= $printBtnId ?>").addEventListener("click", function() {
+                                                // Submit form tersembunyi dengan POST
+                                                document.getElementById("<?= $printFormId ?>").submit();
+                                            });
+                                        </script>
+
                                     <?php } ?>
                                 </tbody>
                             </table>
+
                             <!-- End Primary Color Bordered Table -->
                         </div>
                     </div>
@@ -85,6 +94,9 @@ if (!isset($_SESSION['admin_akses'])) {
         </section>
 
     </main><!-- End #main -->
+
+
+
 
 <?php
     include '../../footer.php';

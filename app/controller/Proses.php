@@ -4,7 +4,7 @@ require_once "../assets/sweetalert/dist/func_sweetAlert.php";
 session_start(); // Mulai sesi
 
 if (isset($_POST['generate'])) {
-    $tgl_proses = trim(mysqli_real_escape_string($koneksi, $_POST['tgl_proses']));
+    $tgl_proses = trim(mysqli_real_escape_string($koneksi, $_POST['date']));
     $status = trim(mysqli_real_escape_string($koneksi, $_POST['status']));
     $invoice = trim(mysqli_real_escape_string($koneksi, $_POST['invoice']));
     $total_tagihan = trim(mysqli_real_escape_string($koneksi, $_POST['total_tagihan']));
@@ -29,7 +29,7 @@ if (isset($_POST['generate'])) {
         // Cek apakah stok mencukupi
         if ($stok_tersedia < $jumlah) {
             $isStokCukup = false;
-            $pesan_stok .= "Stok untuk Kode Barang: $kode_barang tidak mencukupi (tersisa: $stok_tersedia).<br>";
+            $pesan_stok .= "Stok untuk Kode Barang: $kode_barang tidak mencukupi (tersisa: $stok_tersedia).";
         }
     }
 

@@ -9,22 +9,12 @@ include '../../../app/models/home_models.php';
 
   <div class="pagetitle">
     <h1>Dashboard</h1>
-    <nav>
-      <!-- <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item active">Dashboard</li>
-      </ol> -->
-    </nav>
-  </div><!-- End Page Title -->
+  </div>
 
   <section class="section dashboard">
     <div class="row">
-
-      <!-- Left side columns -->
       <div class="col-lg-12">
         <div class="row">
-
-          <!-- Atk masuk -->
           <div class="col-xxl-3 col-md-6">
             <div class="card info-card sales-card">
               <div class="card-body">
@@ -38,19 +28,15 @@ include '../../../app/models/home_models.php';
                     if (has_access($allowed_admin)) { ?>
                       <a href="../proses_pesanan/index.php">
                       <?php  }
-
                     if (has_access($allowed_agen)) { ?>
                         <a href="../form_pesanan/list_data.php">
                         <?php  }
                         ?>
                         <h6><?php
                             if (has_access($allowed_agen)) {
-                              // Pastikan $data_keranjang sudah didefinisikan sebelumnya
                               echo $data_keranjang;
                             }
-
                             if (has_access($allowed_admin)) {
-                              // Pastikan $dikirim sudah didefinisikan sebelumnya
                               echo $dikirim;
                             }
                             ?>
@@ -60,10 +46,8 @@ include '../../../app/models/home_models.php';
                 </div>
               </div>
             </div>
-          </div><!-- End Sales Card -->
+          </div>
 
-
-          <!-- Proses -->
           <div class="col-xxl-3 col-md-6">
             <div class="card info-card revenue-card">
               <div class="card-body">
@@ -76,12 +60,9 @@ include '../../../app/models/home_models.php';
                     <a href="../proses_pesanan/list_data.php">
                       <h6><?php
                           if (has_access($allowed_agen)) {
-                            // Pastikan $data_keranjang sudah didefinisikan sebelumnya
                             echo $data_generate;
                           }
-
                           if (has_access($allowed_admin)) {
-                            // Pastikan $dikirim sudah didefinisikan sebelumnya
                             echo $diproses;
                           }
                           ?></h6>
@@ -90,7 +71,32 @@ include '../../../app/models/home_models.php';
                 </div>
               </div>
             </div>
-          </div><!-- End Revenue Card -->
+          </div>
+
+          <div class="col-xxl-3 col-md-6">
+            <div class="card info-card customers-card">
+              <div class="card-body">
+                <h5 class="card-title" style="border-bottom: 4px solid orange;">ATK Dibagging</h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="ri-box-3-line"></i>
+                  </div>
+                  <div class="ps-3">
+                    <a href="../bagging/list_data_bag.php">
+                      <h6><?php
+                          if (has_access($allowed_agen)) {
+                            echo $data_bagging;
+                          }
+                          if (has_access($allowed_admin)) {
+                            echo $dibagging;
+                          }
+                          ?></h6>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- Pickup -->
           <div class="col-xxl-3 col-xl-12">
@@ -255,7 +261,32 @@ include '../../../app/models/home_models.php';
     </div>
   </section>
 </main><!-- End #main -->
+<!-- ======= Footer ======= -->
+<!-- Vendor JS Files -->
+<script src="../../../app/assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="../../../app/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../../app/assets/vendor/chart.js/chart.umd.js"></script>
+<script src="../../../app/assets/vendor/echarts/echarts.min.js"></script>
+<script src="../../../app/assets/vendor/quill/quill.js"></script>
+<script src="../../../app/assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="../../../app/assets/vendor/php-email-form/validate.js"></script>
 
-<?php
-include '../../footer.php';
-?>
+<!-- Template Main JS File -->
+<script src="../../../app/assets/js/main.js"></script>
+
+<!-- CDN JS Libraries -->
+
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+
+<!-- Tambahkan SweetAlert CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

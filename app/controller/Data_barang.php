@@ -53,26 +53,11 @@ if (isset($_POST['add'])) {
     $status_barang = trim(mysqli_real_escape_string($koneksi, $_POST['status_barang']));
     $katagori = trim(mysqli_real_escape_string($koneksi, $_POST['katagori']));
     $buffer = trim(mysqli_real_escape_string($koneksi, $_POST['buffer']));
+    $stok_barang = trim(mysqli_real_escape_string($koneksi, $_POST['stok_barang']));
 
 
     mysqli_query($koneksi, "UPDATE tb_barang SET kode_barang='$kode_barang', nama_barang='$nama_barang', satuan='$satuan', harga='$harga', status_barang='$status_barang', 
-    katagori='$katagori', buffer='$buffer' WHERE id_barang='$id'");
+    katagori='$katagori', buffer='$buffer' , stok_barang='$stok_barang' WHERE id_barang='$id'");
 
     showSweetAlert('success', 'Success', 'Data Berhasil di Edit', '#3085d6', '../../public/views/data_barang/index.php');
 }
-
-//  else if (isset($_POST['ambil'])) {
-//     $id = $_POST['id'];
-//     $saldo_update = trim(mysqli_real_escape_string($koneksi, $_POST['saldo_update']));
-
-//     $jenis_bukubesar = trim(mysqli_real_escape_string($koneksi, $_POST['jenis_bukubesar']));
-//     $tgl_bukubesar = trim(mysqli_real_escape_string($koneksi, $_POST['tgl_bukubesar']));
-//     $keterangan = trim(mysqli_real_escape_string($koneksi, $_POST['keterangan']));
-//     $debit_bukubesar = trim(mysqli_real_escape_string($koneksi, $_POST['debit_bukubesar']));
-//     $kredit_bukubesar = trim(mysqli_real_escape_string($koneksi, $_POST['kredit_bukubesar']));
-
-//     mysqli_query($koneksi, "UPDATE tb_anggota SET saldo='$saldo_update' WHERE id_anggota='$id'");
-//     // Masukan data ke table bukubesar
-//     mysqli_query($koneksi, "INSERT INTO tb_bukubesar(jenis_bukubesar, tgl_bukubesar, keterangan, debit_bukubesar, kredit_bukubesar) 
-//     VALUES('$jenis_bukubesar', '$tgl_bukubesar', '$keterangan', '$debit_bukubesar', '$kredit_bukubesar')");
-//     showSweetAlert('success', 'Success', $pesan_ambil, '#3085d6', $tujuan_3);

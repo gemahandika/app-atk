@@ -12,14 +12,14 @@ $tujuan = "../../public/views/asset/index.php";
 $tujuan_maintenance = "../../public/views/maintenance/add_maintenance.php";
 $destroy = "../../public/views/asset/destroy.php";
 $tujuan_3 = "../../public/views/data_anggota/index_nonaktif.php";
-function showSweetAlert($icon, $title, $text, $confirmButtonColor, $tujuan)
+function showSweetAlert($icon, $title, $htmlContent, $confirmButtonColor, $tujuan)
 {
     echo "<script>
         document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
                 icon: '$icon',
                 title: '$title',
-                text: '$text',
+                html: `$htmlContent`, // ✅ gunakan html, bukan text
                 confirmButtonColor: '$confirmButtonColor',
                 confirmButtonText: 'OK'
             }).then((result) => {

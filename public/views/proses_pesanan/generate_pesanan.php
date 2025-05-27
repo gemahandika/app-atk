@@ -2,7 +2,7 @@
 session_name("dashboard_atk_session");
 session_start();
 include '../../header.php';
-$date = date("Y-m-d");
+$date_for_db = date("Y-m-d H:i:s");
 $time = date("H:i");
 // include 'cek_status.php';
 $invoice = isset($_GET['invoice']) ? $_GET['invoice'] : '';
@@ -22,7 +22,7 @@ $data2 = $data["invoice"];
 $total_tagihan = 0;
 
 // Ambil data dari tb_keranjang berdasarkan invoice
-$sql = mysqli_query($koneksi, "SELECT * FROM tb_keranjang WHERE status IN ('DIKIRIM', 'GENERATE') AND invoice = '$invoice' ORDER BY id_keranjang ASC") or die(mysqli_error($koneksi));
+$sql = mysqli_query($koneksi, "SELECT * FROM tb_keranjang WHERE status IN ('DIPESAN', 'GENERATE') AND invoice = '$invoice' ORDER BY id_keranjang ASC") or die(mysqli_error($koneksi));
 $result1 = array();
 while ($data1 = mysqli_fetch_array($sql)) {
     $result1[] = $data1;
@@ -140,7 +140,7 @@ while ($data1 = mysqli_fetch_array($sql)) {
                         </table>
 
                         <form action="../../../app/controller/Proses.php" method="post">
-                            <input type="hidden" name="tgl_proses" value="<?= $date ?>" readonly>
+                            <input type="hidden" class="form-control" id="datetime" name="date" readonly>
                             <input type="hidden" name="status" value="GENERATE" readonly>
                             <input type="hidden" name="invoice" value="<?= $data1['invoice'] ?>" readonly required>
                             <input type="hidden" name="total_tagihan" id="total_tagihan" value="<?= $total_tagihan ?>" readonly>
@@ -149,7 +149,7 @@ while ($data1 = mysqli_fetch_array($sql)) {
                             <div class="row mb-3 d-flex justify-content-end">
                                 <div class="col-sm-4 mt-2 d-flex justify-content-end me-3">
                                     <!-- Tombol GENERATE akan dinonaktifkan jika status pesanan adalah 'GENERATE' -->
-                                    <button type="submit" class="btn btn-success me-2" name="generate" <?= $disabled_generate; ?>>GENERATE</button>
+                                    <button type="submit" id="setTimeBtn" class="btn btn-success me-2" name="generate" <?= $disabled_generate; ?>>GENERATE</button>
                                 </div>
                             </div>
                         </form>
@@ -165,8 +165,32 @@ while ($data1 = mysqli_fetch_array($sql)) {
             </div>
     </section>
 </main><!-- End #main -->
+<!-- ======= Footer ======= -->
+<!-- Vendor JS Files -->
+<script src="../../../app/assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="../../../app/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../../app/assets/vendor/chart.js/chart.umd.js"></script>
+<script src="../../../app/assets/vendor/echarts/echarts.min.js"></script>
+<script src="../../../app/assets/vendor/quill/quill.js"></script>
+<script src="../../../app/assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="../../../app/assets/vendor/php-email-form/validate.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Template Main JS File -->
+<script src="../../../app/assets/js/main.js"></script>
+
+<!-- CDN JS Libraries -->
+
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+
+<!-- Tambahkan SweetAlert CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     function hitungTotal(id_keranjang) {
         var jumlah = document.getElementById('jumlah_' + id_keranjang).value;
@@ -200,6 +224,8 @@ while ($data1 = mysqli_fetch_array($sql)) {
     });
 </script>
 
-<?php
-include '../../footer.php';
-?>
+
+
+</body>
+
+</html>

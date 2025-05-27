@@ -43,7 +43,7 @@ include '../../../app/models/header_models.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Template Main CSS File -->
     <link href="../../../app/assets/css/style.css" rel="stylesheet">
@@ -61,15 +61,10 @@ include '../../../app/models/header_models.php';
         </div><!-- End Logo -->
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
-                <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link nav-icon search-bar-toggle " href="#">
-                        <i class="bi bi-search"></i>
-                    </a>
-                </li><!-- End Search Icon-->
                 <li class="nav-item dropdown pe-3">
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="../../../app/assets/img/kurir.png" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2"><?= $user1 ?></span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2"><?= $data2 ?></span>
                     </a><!-- End Profile Iamge Icon -->
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li>
@@ -107,20 +102,33 @@ include '../../../app/models/header_models.php';
                         <a class="nav-link collapsed" href="../proses_pesanan/index.php">
                             <i class="ri-shopping-basket-line"></i>
                             <span>Proses Pesanan</span>
-                            <?php if ($dikirim > 0): ?>
-                                <span class="badge bg-danger position-absolute translate-middle-y end-0" style="top: 20px; "><?php echo $dikirim; ?></span>
+                            <?php if ($dipesan > 0): ?>
+                                <span class="badge bg-danger position-absolute translate-middle-y end-0" style="top: 20px; "><?php echo $dipesan; ?></span>
                             <?php endif; ?>
                         </a>
                     </li><!-- End Prosesn Nav -->
             <?php }
             } ?>
+            <?php if (has_access($allowed_bag)) { ?>
+                <li class="nav-item" style="border-bottom: 1px solid rgba(0, 0, 0, 0.3); position: relative;">
+                    <a class="nav-link collapsed" href="../bagging/index.php">
+                        <i class="ri-box-3-line"></i>
+                        <span>Bagging</span>
+                        <?php if ($diproses > 0): ?>
+                            <span class="badge bg-danger position-absolute translate-middle-y end-0" style="top: 20px; "><?php echo $diproses; ?></span>
+                        <?php endif; ?>
+                    </a>
+                </li><!-- End Prosesn Nav -->
+            <?php } ?>
+
+
             <?php if (has_access($allowed_pickup)) { ?>
                 <li class="nav-item" style="border-bottom: 1px solid rgba(0, 0, 0, 0.3); position: relative;">
                     <a class="nav-link collapsed" href="../pickup/index.php">
                         <i class="bx bxs-truck"></i>
                         <span>Pickup</span>
-                        <?php if ($diproses > 0): ?>
-                            <span class="badge bg-danger position-absolute translate-middle-y end-0" style="top: 20px; "><?php echo $diproses; ?></span>
+                        <?php if ($dibagging > 0): ?>
+                            <span class="badge bg-danger position-absolute translate-middle-y end-0" style="top: 20px; "><?php echo $dibagging; ?></span>
                         <?php endif; ?>
                     </a>
                 </li><!-- EndPickup Nav -->

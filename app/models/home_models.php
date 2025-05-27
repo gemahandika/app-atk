@@ -1,19 +1,23 @@
 <?php
 
-$sql1 = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'DIKIRIM'") or die(mysqli_error($koneksi));
-$dikirim = mysqli_num_rows($sql1);
-$sql2 = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'GENERATE'") or die(mysqli_error($koneksi));
-$diproses = mysqli_num_rows($sql2);
-$sql3 = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'DIPICKUP'") or die(mysqli_error($koneksi));
-$dipickup = mysqli_num_rows($sql3);
-$sql4 = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'DITERIMA'") or die(mysqli_error($koneksi));
-$diterima = mysqli_num_rows($sql4);
+$sql_pesan_admin = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'DIPESAN'") or die(mysqli_error($koneksi));
+$dikirim = mysqli_num_rows($sql_pesan_admin);
+$sql_generate_admin = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'GENERATE'") or die(mysqli_error($koneksi));
+$diproses = mysqli_num_rows($sql_generate_admin);
+$sql_bagging_admin = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'DIBAGGING'") or die(mysqli_error($koneksi));
+$dibagging = mysqli_num_rows($sql_bagging_admin);
+$sql_pickup_admin = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'DIPICKUP'") or die(mysqli_error($koneksi));
+$dipickup = mysqli_num_rows($sql_pickup_admin);
+$sql_terima_admin = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'DITERIMA'") or die(mysqli_error($koneksi));
+$diterima = mysqli_num_rows($sql_terima_admin);
 
 // Dashboard Client Agen
-$sql_keranjang = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'DIKIRIM' AND user_id = '$user1'") or die(mysqli_error($koneksi));
+$sql_keranjang = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'DIPESAN' AND user_id = '$user1'") or die(mysqli_error($koneksi));
 $data_keranjang = mysqli_num_rows($sql_keranjang);
 $sql_generate = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'GENERATE' AND user_id = '$user1'") or die(mysqli_error($koneksi));
 $data_generate = mysqli_num_rows($sql_generate);
+$sql_bagging = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'DIBAGGING' AND user_id = '$user1'") or die(mysqli_error($koneksi));
+$data_bagging = mysqli_num_rows($sql_bagging);
 $sql_pickup = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'DIPICKUP' AND user_id = '$user1'") or die(mysqli_error($koneksi));
 $data_pickup = mysqli_num_rows($sql_pickup);
 $sql_terima = mysqli_query($koneksi, "SELECT * FROM tb_pesanan WHERE status = 'DITERIMA' AND user_id = '$user1'") or die(mysqli_error($koneksi));
