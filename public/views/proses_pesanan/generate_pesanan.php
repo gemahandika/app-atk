@@ -223,7 +223,26 @@ while ($data1 = mysqli_fetch_array($sql)) {
         document.getElementById("printForm").submit();
     });
 </script>
+<!-- Inisialisasi DataTables -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('#example1')) {
+            new DataTable('#example1', {
+                paging: true,
+                scrollCollapse: true,
+                scrollY: '335px'
+            });
+        }
 
+        if (document.querySelector('#example')) {
+            new DataTable('#example', {
+                paging: true,
+                scrollCollapse: false
+                // scrollY: '350px'
+            });
+        }
+    });
+</script>
 
 
 </body>

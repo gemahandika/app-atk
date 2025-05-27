@@ -159,9 +159,6 @@ $time = date("H:i");
                     </div>
                 </div>
             </div>
-
-
-
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
@@ -239,6 +236,40 @@ $time = date("H:i");
 
 <!-- Tambahkan SweetAlert CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Script untuk ambil waktu sekarang saat tombol diklik -->
+<script>
+    document.getElementById('setTimeBtn').addEventListener('click', function() {
+        const now = new Date();
+
+        // Format: YYYY-MM-DD HH:mm:ss
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+        // Isi ke input
+        document.getElementById('datetime').value = formattedDateTime;
+    });
+</script>
+<!-- Kirim Pesanan Toggle Button -->
+<script>
+    $(document).ready(function() {
+        function checkTotalItems() {
+            var totalItems = parseInt($('#total_items').val()) || 0;
+            $('#setTimeBtn').prop('disabled', totalItems === 0)
+                .attr('title', totalItems === 0 ? 'Silahkan masukkan pesanan ke list' : '');
+        }
+
+        checkTotalItems();
+        $('#total_items').on('input', checkTotalItems);
+    });
+</script>
+
 <script>
     $(document).ready(function() {
         var allItems = <?php echo json_encode($result); ?>;
@@ -286,6 +317,7 @@ $time = date("H:i");
         }
     });
 </script>
+
 <!-- Inisialisasi DataTables -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {

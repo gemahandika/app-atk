@@ -61,19 +61,6 @@
 
 
 
-<!-- Kirim Pesanan Toggle Button -->
-<script>
-    $(document).ready(function() {
-        function checkTotalItems() {
-            var totalItems = parseInt($('#total_items').val()) || 0;
-            $('#kirim_pesanan').prop('disabled', totalItems === 0)
-                .attr('title', totalItems === 0 ? 'Silahkan masukkan pesanan ke list' : '');
-        }
-
-        checkTotalItems();
-        $('#total_items').on('input', checkTotalItems);
-    });
-</script>
 
 <!-- Pembayaran Otomatis -->
 <script>
