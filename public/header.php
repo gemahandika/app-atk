@@ -122,7 +122,7 @@ include '../../../app/models/header_models.php';
             <?php } ?>
 
 
-            <?php if (has_access($allowed_pickup)) { ?>
+            <?php if (in_array("super_admin", $_SESSION['admin_akses']) || in_array("pickup", $_SESSION['admin_akses'])) { ?>
                 <li class="nav-item" style="border-bottom: 1px solid rgba(0, 0, 0, 0.3); position: relative;">
                     <a class="nav-link collapsed" href="../pickup/index.php">
                         <i class="bx bxs-truck"></i>
