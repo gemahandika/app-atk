@@ -14,9 +14,9 @@ $time = date("H:i");
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title" style="border-bottom: 1px solid black;">Terima Pesanan</h5>
-                        <table id="example1" class="display data" style="width:100%">
+                        <table id="example1" class="display nowrap" style="width:100%">
                             <thead>
-                                <tr class="table-info">
+                                <tr class="bg-info text-white">
                                     <th class="th-small text-center">No</th>
                                     <th class="th-small text-center">NAMA</th>
                                     <th class="th-small text-center">INVOICE</th>
@@ -48,7 +48,7 @@ $time = date("H:i");
                                         <td class="th-small text-center"><?= $data['nama_user'] ?></td>
                                         <td class="th-small text-center"><?= $data['invoice'] ?></td>
                                         <td class="th-small text-center"><?= $data['total_item'] ?></td>
-                                        <td class="th-small "><?= $data['total_tagihan'] ?></td>
+                                        <td class="th-small text-center"><?= $data['total_tagihan'] ?></td>
                                         <td class="th-small text-center"><?= $data['nama_pickup'] ?></td>
                                         <td class="th-small text-center"><?= $data['date'] ?></td>
                                     </tr>

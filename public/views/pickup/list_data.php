@@ -14,9 +14,9 @@ $time = date("H:i");
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title" style="border-bottom: 1px solid black;">List Data - Proses Pickup</h5>
-                        <table id="example" class="table" style="width:100%">
+                        <table id="example1" class="display nowrap" style="width:100%">
                             <thead>
-                                <tr class="table-warning">
+                                <tr class="bg-warning">
                                     <th class="th-small text-center">No</th>
                                     <th class="th-small text-center">NAMA</th>
                                     <th class="th-small text-center">INVOICE</th>
@@ -91,20 +91,6 @@ $time = date("H:i");
 <!-- Tambahkan SweetAlert CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- <script>
-        function hitungTotal(id_barang) {
-            // Ambil nilai stok awal dan nilai tambah berdasarkan id_barang
-            var stokAwal = parseInt(document.getElementById('stok_awal' + id_barang).value) || 0;
-            var tambahStok = parseInt(document.getElementById('tambah_stok' + id_barang).value) || 0;
-
-            // Hitung total
-            var totalStok = stokAwal + tambahStok;
-
-            // Masukkan hasil ke input total stok
-            document.getElementById('total_stok' + id_barang).value = totalStok;
-        }
-    </script> -->
-<!-- Inisialisasi DataTables -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         if (document.querySelector('#example1')) {
