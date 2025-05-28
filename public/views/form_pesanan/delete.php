@@ -1,30 +1,38 @@
-<!-- SweetAlert CSS -->
-<link rel="stylesheet" href="../../../app/assets/sweetalert/dist/sweetalert2.min.css">
-
-<!-- SweetAlert JS -->
-<script src="../../../app/assets/sweetalert/dist/sweetalert2.all.min.js"></script>
 <?php
+session_name("dashboard_atk_session");
+session_start();
+include '../../../app/config/koneksi.php';
 
 $tujuan_index = "index.php";
-function showSweetAlert($icon, $title, $text, $confirmButtonColor, $tujuan)
-{
-    echo "<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire({
-                icon: '$icon',
-                title: '$title',
-                text: '$text',
-                confirmButtonColor: '$confirmButtonColor',
-                confirmButtonText: 'OK'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location = '$tujuan';
-                }
-            });
-        });
-    </script>";
+
+// Validasi ID
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    $_SESSION['swal'] = [
+        'icon' => 'error',
+        'title' => 'Gagal',
+        'text' => 'ID tidak ditemukan!',
+    ];
+    header("Location: $tujuan_index");
+    exit();
 }
 
-include '../../../app/config/koneksi.php';
-mysqli_query($koneksi, "DELETE FROM tb_keranjang WHERE id_keranjang= '$_GET[id]'") or die(mysqli_error($koneksi));
-showSweetAlert('success', 'Success', 'Data Berhasil di Hapus', '#dc3545', $tujuan_index);
+$id = mysqli_real_escape_string($koneksi, $_GET['id']);
+
+$query = mysqli_query($koneksi, "DELETE FROM tb_keranjang WHERE id_keranjang = '$id'");
+
+if ($query) {
+    $_SESSION['swal'] = [
+        'icon' => 'success',
+        'title' => 'Success',
+        'text' => 'Data berhasil dihapus.',
+    ];
+} else {
+    $_SESSION['swal'] = [
+        'icon' => 'error',
+        'title' => 'Gagal',
+        'text' => 'Terjadi kesalahan saat menghapus data.',
+    ];
+}
+
+header("Location: $tujuan_index");
+exit();

@@ -229,12 +229,9 @@ $time = date("H:i");
 <script src="../../../app/assets/vendor/quill/quill.js"></script>
 <script src="../../../app/assets/vendor/tinymce/tinymce.min.js"></script>
 <script src="../../../app/assets/vendor/php-email-form/validate.js"></script>
-
 <!-- Template Main JS File -->
 <script src="../../../app/assets/js/main.js"></script>
-
 <!-- CDN JS Libraries -->
-
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -366,6 +363,17 @@ $time = date("H:i");
 
     window.onload = updatePembayaran;
 </script>
+<?php if (isset($_SESSION['swal'])): ?>
+    <script>
+        Swal.fire({
+            icon: '<?= $_SESSION['swal']['icon'] ?>',
+            title: '<?= $_SESSION['swal']['title'] ?>',
+            text: '<?= $_SESSION['swal']['text'] ?>',
+        });
+    </script>
+<?php unset($_SESSION['swal']);
+endif; ?>
+
 </body>
 
 </html>
