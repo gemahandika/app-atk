@@ -40,6 +40,8 @@ $time = date("H:i");
                             <input type="hidden" class="form-control" name="user_id" value="<?= $user1 ?>" readonly>
                             <input type="hidden" class="form-control" name="status" value="KERANJANG" readonly>
 
+
+
                             <div class="row mb-3">
                                 <label class="col-sm-3 col-form-label">Barang <strong class="text-danger">*</strong></label>
                                 <div class="col-sm-8">
@@ -134,6 +136,13 @@ $time = date("H:i");
                                 <input type="hidden" class="form-control" name="status1" value="DIPESAN" readonly>
                                 <input type="hidden" class="form-control" id="datetime" name="date" readonly>
                                 <input type="hidden" class="form-control" name="invoice" value="<?php echo $noInvoice; ?>" readonly>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label">Keterangan</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="keterangan" required placeholder="Masukan Nama Pemesan">
+                                    </div>
+                                </div>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-3 col-form-label">Total Items :</label>

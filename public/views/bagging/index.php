@@ -39,6 +39,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                                         <th class="th-small text-center">USER ID</th>
                                         <th class="th-small text-center">TANGGAL</th>
                                         <th class="th-small text-center">STATUS</th>
+                                        <th class="th-small text-center">KETERANGAN</th>
                                         <th class="th-small text-center">ACTION</th>
                                     </tr>
                                 </thead>
@@ -64,6 +65,7 @@ if (!in_array("super_admin", $_SESSION['admin_akses']) && !in_array("admin", $_S
                                             <td class="th-small text-center"><?= $data['user_id'] ?></td>
                                             <td class="th-small text-center"><?= $data['date'] ?></td>
                                             <td class="th-small text-center"><?= $data['status'] ?></td>
+                                            <td class="th-small text-center text-danger"><b><?= $data['keterangan'] ?></b></td>
                                             <td class="th-small text-center">
                                                 <!-- Form tersembunyi untuk mengirim data POST -->
                                                 <form id="<?= $printFormId ?>" method="POST" action="print.php" target="_blank" style="display: none;">

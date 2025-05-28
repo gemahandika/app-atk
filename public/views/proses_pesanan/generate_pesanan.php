@@ -37,7 +37,13 @@ while ($data1 = mysqli_fetch_array($sql)) {
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" style="border-bottom: 1px solid black;">Detail ATK <?= $data['nama_user'] ?> - Invoice : <?= $invoice ?> </h5>
+                        <h5 class="card-title" style="border-bottom: 1px solid black;">
+                            Detail ATK <?= htmlspecialchars($data['nama_user'] ?? '-') ?> - Invoice : <?= htmlspecialchars($invoice ?? '-') ?>
+                            <?php if (has_access($allowed_admin) && !empty($data['keterangan'])): ?>
+                                - <?= htmlspecialchars($data['keterangan']) ?>
+                            <?php endif; ?>
+                        </h5>
+
                         <?php
                         // Ambil status pesanan dari tb_pesanan berdasarkan invoice
                         $invoice = $data['invoice'];

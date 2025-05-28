@@ -26,6 +26,7 @@ $time = date("H:i");
                                     <th class="th-small text-center">TANGGAL</th>
                                     <th class="th-small text-center">STATUS</th>
                                     <?php if (has_access($allowed_admin)) { ?>
+                                        <th class="th-small text-center">PEMESAN</th>
                                         <th class="th-small text-center">ACTION</th>
                                     <?php } ?>
                                 </tr>
@@ -58,6 +59,7 @@ $time = date("H:i");
                                         <td class="th-small text-center"><?= $data['date'] ?></td>
                                         <td class="th-small text-center"><?= $data['status'] ?></td>
                                         <?php if (has_access($allowed_admin)) { ?>
+                                            <td class="th-small text-center text-danger"><b><?= $data['keterangan'] ?></b></td>
                                             <td class="th-small text-center">
                                                 <!-- Form tersembunyi untuk mengirim data POST -->
                                                 <form id="<?= $printFormId ?>" method="POST" action="export.php" target="_blank" style="display: none;">

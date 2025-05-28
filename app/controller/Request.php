@@ -65,13 +65,13 @@ if (isset($_POST['add_keranjang'])) {
     $status = trim(mysqli_real_escape_string($koneksi, $_POST['status']));
     $status1 = trim(mysqli_real_escape_string($koneksi, $_POST['status1']));
     $pembayaran = trim(mysqli_real_escape_string($koneksi, $_POST['pembayaran']));
-
+    $keterangan = trim(mysqli_real_escape_string($koneksi, $_POST['keterangan']));
     //update tb keranjang (invoice)
     mysqli_query($koneksi, "UPDATE tb_keranjang SET invoice ='$invoice' , tgl_pesan = '$date' WHERE status='$status' AND user_id='$user_id'");
-    mysqli_query($koneksi, "UPDATE tb_keranjang SET status ='$status1' WHERE invoice='$invoice' AND user_id='$user_id'");
+    mysqli_query($koneksi, "UPDATE tb_keranjang SET status ='$status1', keterangan = '$keterangan' WHERE invoice='$invoice' AND user_id='$user_id'");
     // insert tb_pesanan / proses
-    mysqli_query($koneksi, "INSERT INTO tb_pesanan (nama_user, user_id, total_item, total_tagihan, invoice, status, date, pembayaran) 
-    VALUES('$nama_user','$user_id', $total_items, $total_tagihan, '$invoice', '$status1', '$date' ,'$pembayaran')");
+    mysqli_query($koneksi, "INSERT INTO tb_pesanan (nama_user, user_id, total_item, total_tagihan, invoice, status, date, pembayaran, keterangan) 
+    VALUES('$nama_user','$user_id', $total_items, $total_tagihan, '$invoice', '$status1', '$date' ,'$pembayaran' ,'$keterangan')");
     showSweetAlert('success', 'Success', $pesan_ok, '#3085d6', '../../public/views/form_pesanan/index.php');
     $_SESSION['noInvoice'] = generateInvoiceNumber();
 } else if (isset($_POST['edit'])) {
