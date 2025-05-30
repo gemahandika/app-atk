@@ -101,14 +101,25 @@
         echo "<script>alert('Invoice tidak valid.'); window.close();</script>";
         exit;
     }
+
+    // Ambil tgl_pesan dari tb_pesanan
+    $tgl_pesan_result = mysqli_query($koneksi, "SELECT date FROM tb_pesanan WHERE invoice = '$invoice' LIMIT 1");
+    $tgl_pesan = '';
+    if ($tgl_pesan_result && mysqli_num_rows($tgl_pesan_result) > 0) {
+        $row = mysqli_fetch_assoc($tgl_pesan_result);
+        $tgl_datetime = strtotime($row['date']);
+        $tgl_pesan = date('d M Y | H:i', $tgl_datetime) . ' WIB';
+    }
     ?>
+
+
 
     <div class="container">
         <div class="barcode-header">
             <h2>Detail Request Barang ATK</h2>
             <svg id="barcode"></svg>
         </div>
-
+        <p><strong>Tanggal Pemesanan:</strong> <?= $tgl_pesan ?></p>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -116,23 +127,34 @@
                     <th>NAMA BARANG</th>
                     <th>SATUAN</th>
                     <th>JUMLAH</th>
+                    <th>TOTAL HARGA</th>
                     <th>NAMA AGEN / KP</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $sql = mysqli_query($koneksi, "SELECT * FROM tb_keranjang WHERE invoice='$invoice' AND status='GENERATE'") or die(mysqli_error($koneksi));
+                $grand_total = 0;
                 while ($data = mysqli_fetch_array($sql)) :
+                    $grand_total += $data['total_harga'];
                 ?>
                     <tr>
                         <td><?= $data['invoice'] ?></td>
                         <td><?= $data['nama_barang'] ?></td>
                         <td><?= $data['satuan'] ?></td>
                         <td><?= $data['jumlah'] ?></td>
+                        <td><?= number_format($data['total_harga'], 0, ',', '.') ?></td>
                         <td><?= $data['nama_user'] ?></td>
                     </tr>
                 <?php endwhile; ?>
+                <!-- Tambahkan baris untuk Grand Total -->
+                <tr>
+                    <td colspan="4" class="text-right font-weight-bold">TOTAL TAGIHAN</td>
+                    <td class="font-weight-bold">Rp. <?= number_format($grand_total, 0, ',', '.') ?></td>
+                    <td></td>
+                </tr>
             </tbody>
+
         </table>
 
         <table class="table table-bordered signature-box mt-4">
