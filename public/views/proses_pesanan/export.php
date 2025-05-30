@@ -102,13 +102,15 @@
         exit;
     }
 
-    // Ambil tgl_pesan dari tb_pesanan
-    $tgl_pesan_result = mysqli_query($koneksi, "SELECT date FROM tb_pesanan WHERE invoice = '$invoice' LIMIT 1");
+    // Ambil tgl_pesan dan nama agen dari tb_pesanan
+    $tgl_pesan_result = mysqli_query($koneksi, "SELECT date, keterangan FROM tb_pesanan WHERE invoice = '$invoice' LIMIT 1");
     $tgl_pesan = '';
+    $nama_agen = '';
     if ($tgl_pesan_result && mysqli_num_rows($tgl_pesan_result) > 0) {
         $row = mysqli_fetch_assoc($tgl_pesan_result);
         $tgl_datetime = strtotime($row['date']);
         $tgl_pesan = date('d M Y | H:i', $tgl_datetime) . ' WIB';
+        $nama_agen = $row['keterangan'];
     }
     ?>
 
@@ -119,7 +121,10 @@
             <h2>Detail Request Barang ATK</h2>
             <svg id="barcode"></svg>
         </div>
-        <p><strong>Tanggal Pemesanan:</strong> <?= $tgl_pesan ?></p>
+        <div class="container d-flex justify-content-between">
+            <p>Tanggal Pemesanan: <strong><?= $tgl_pesan ?></strong></p>
+            <h5 class="mr-4"><strong> <?= $nama_agen ?></strong></h5>
+        </div>
         <table class="table table-bordered">
             <thead>
                 <tr>
