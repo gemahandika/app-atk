@@ -1,6 +1,7 @@
 <?php
 require_once "../config/koneksi.php";
 session_name("dashboard_atk_session");
+require_once "../assets/sweetalert/dist/func_sweetAlert.php";
 session_start();
 
 if (!isset($_SESSION['admin_username'])) {
@@ -119,19 +120,3 @@ if (isset($_POST['add_keranjang'])) {
 
     showSweetAlert('success', 'Success', $pesan_update, '#3085d6', '../../public/views/proses_pesanan/generate_pesanan.php?invoice=' . $invoice);
 }
-
-//  else if (isset($_POST['ambil'])) {
-//     $id = $_POST['id'];
-//     $saldo_update = trim(mysqli_real_escape_string($koneksi, $_POST['saldo_update']));
-
-//     $jenis_bukubesar = trim(mysqli_real_escape_string($koneksi, $_POST['jenis_bukubesar']));
-//     $tgl_bukubesar = trim(mysqli_real_escape_string($koneksi, $_POST['tgl_bukubesar']));
-//     $keterangan = trim(mysqli_real_escape_string($koneksi, $_POST['keterangan']));
-//     $debit_bukubesar = trim(mysqli_real_escape_string($koneksi, $_POST['debit_bukubesar']));
-//     $kredit_bukubesar = trim(mysqli_real_escape_string($koneksi, $_POST['kredit_bukubesar']));
-
-//     mysqli_query($koneksi, "UPDATE tb_anggota SET saldo='$saldo_update' WHERE id_anggota='$id'");
-//     // Masukan data ke table bukubesar
-//     mysqli_query($koneksi, "INSERT INTO tb_bukubesar(jenis_bukubesar, tgl_bukubesar, keterangan, debit_bukubesar, kredit_bukubesar) 
-//     VALUES('$jenis_bukubesar', '$tgl_bukubesar', '$keterangan', '$debit_bukubesar', '$kredit_bukubesar')");
-//     showSweetAlert('success', 'Success', $pesan_ambil, '#3085d6', $tujuan_3);

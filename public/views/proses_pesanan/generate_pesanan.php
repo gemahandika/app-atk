@@ -268,6 +268,7 @@ while ($data1 = mysqli_fetch_array($sql)) {
     });
 </script>
 
+
 </body>
 
 </html>
